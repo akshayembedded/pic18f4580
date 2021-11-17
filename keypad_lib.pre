@@ -1,5 +1,5 @@
 
-# 1 "F:\online\ahmed\pic controller\lcd_lib.c"
+# 1 "F:\online\ahmed\pic controller\keypad_lib.c"
 
 # 24 "C:\Program Files (x86)\HI-TECH Software\PICC-18\PRO\9.63\include\18f4580.h"
 typedef union {
@@ -6197,82 +6197,45 @@ void data4(char);
 void lcd_init();
 void display(const char *,char );
 
-# 2 "F:\online\ahmed\pic controller\lcd_lib.c"
-void data(char a)
-{
-int i;
-RD0=1;
-LATC=a;
-RD1=1;
-for(i=0;i<=1000;i++);
-RD1=0;
+# 1 "F:\online\ahmed\pic controller\keypad.h"
+char keypad(void);
 
-}
-void lcd_init()
+# 4 "F:\online\ahmed\pic controller\keypad_lib.c"
+char keypad(void)
 {
-cmd(0x38);
-cmd(0x01);
-cmd(0x0f);
-}
-
-void cmd(char a)
+while(1)
 {
-int i;
-RD0=0;
-LATC=a;
-RD1=1;
-for(i=0;i<=1000;i++);
-RD1=0;
-}
-
-void display(const char *p,char i)
+LATB=0xe0;
+switch(PORTB&0x0f)
 {
-while(*p)
-{
-if(i==8)
-{
-data(*p);
+case 0x0e: return('a');
+case 0x0b: return('b');
+case 0x0D: return('c');
+case 0x07: return('d');
 }
-else if(i==4)
+LATB=0xD0;
+switch(PORTB&0x0f)
 {
-data4(*p);
+case 0x0e: return('e');
+case 0x0b: return('f');
+case 0x0D: return('g');
+case 0x07: return('h');
 }
-p++;
-}
-}
-
-# 54
-void data4(char a)
+LATB=0xB0;
+switch(PORTB&0x0f)
 {
-int i;
-LATC=0x00;
-RC0=1;
-LATC=LATC|((a&0xf0)>>2);
-RC1=1;
-for(i=0;i<=1000;i++);
-RC1=0;
-
-LATC=0x00;
-RC0=1;
-LATC=LATC|((a&0x0f)<<2);
-RC1=1;
-for(i=0;i<=1000;i++);
-RC1=0;
+case 0x0e: return('i');
+case 0x0b: return('j');
+case 0x0D: return('k');
+case 0x07: return('l');
 }
-void cmd4(char a)
+LATB=0x70;
+switch(PORTB&0x0f)
 {
-int i;
-LATC=0x00;
-RC0=0;
-LATC=LATC|((a&0xf0)>>2);
-RC1=1;
-for(i=0;i<=1000;i++);
-RC1=0;
-
-LATC=0x00;
-RC0=0;
-LATC=LATC|((a&0x0f)<<2);
-RC1=1;
-for(i=0;i<=1000;i++);
-RC1=0;
+case 0x0e: return('m');
+case 0x0b: return('n');
+case 0x0D: return('o');
+case 0x07: return('p');
+}
+}
 }

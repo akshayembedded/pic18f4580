@@ -1,18 +1,8 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"667 C:\Program Files (x86)\HI-TECH Software\PICC-18\PRO\9.63\include\pic18f4580.h
-[v _RD0 `VNb 0 e@31768 ]
-"147 C:\Program Files (x86)\HI-TECH Software\PICC-18\PRO\9.63\include\pic18f4580.h
-[v _LATC `VNuc 0 e@3979 ]
-"668 C:\Program Files (x86)\HI-TECH Software\PICC-18\PRO\9.63\include\pic18f4580.h
-[v _RD1 `VNb 0 e@31769 ]
-"2 F:\online\ahmed\pic controller\lcd.h
-[v _cmd `(v 0 ef1`uc ]
-"5 F:\online\ahmed\pic controller\lcd.h
-[v _data4 `(v 0 ef1`uc ]
-"678 C:\Program Files (x86)\HI-TECH Software\PICC-18\PRO\9.63\include\pic18f4580.h
-[v _RC0 `VNb 0 e@31760 ]
-"679 C:\Program Files (x86)\HI-TECH Software\PICC-18\PRO\9.63\include\pic18f4580.h
-[v _RC1 `VNb 0 e@31761 ]
+"148 C:\Program Files (x86)\HI-TECH Software\PICC-18\PRO\9.63\include\pic18f4580.h
+[v _LATB `VNuc 0 e@3978 ]
+"155 C:\Program Files (x86)\HI-TECH Software\PICC-18\PRO\9.63\include\pic18f4580.h
+[v _PORTB `VNuc 0 e@3969 ]
 [; ;18f4580.h: 24: typedef union {
 [; ;18f4580.h: 25: struct {
 [; ;18f4580.h: 26: unsigned volatile STKPTR:5;
@@ -5471,291 +5461,196 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.h: 5: void data4(char);
 [; ;lcd.h: 6: void lcd_init();
 [; ;lcd.h: 7: void display(const char *,char );
-"3 F:\online\ahmed\pic controller\lcd_lib.c
-[v _data `(v 1 ef1`uc ]
+[; ;keypad.h: 1: char keypad(void);
+"5 F:\online\ahmed\pic controller\keypad_lib.c
+[v _keypad `(uc 1 ef ]
 {
-[; ;lcd_lib.c: 2: void data(char a)
-[; ;lcd_lib.c: 3: {
-[e :U _data ]
-[v _a `uc 1 r1 ]
+[; ;keypad_lib.c: 4: char keypad(void)
+[; ;keypad_lib.c: 5: {
+[e :U _keypad ]
 [f ]
-"4
-[v _i `i 1 a ]
-[; ;lcd_lib.c: 4: int i;
-[; ;lcd_lib.c: 5: RD0=1;
-"5
-[e = _RD0 -> -> 1 `i `b ]
-[; ;lcd_lib.c: 6: LATC=a;
+[; ;keypad_lib.c: 6: while(1)
 "6
-[e = _LATC _a ]
-[; ;lcd_lib.c: 7: RD1=1;
-"7
-[e = _RD1 -> -> 1 `i `b ]
-[; ;lcd_lib.c: 8: for(i=0;i<=1000;i++);
-"8
-{
-[e = _i -> 0 `i ]
-[e $ <= _i -> 1000 `i 675  ]
-[e $U 676  ]
-[e :U 675 ]
-[e ++ _i -> 1 `i ]
-[e $ <= _i -> 1000 `i 675  ]
 [e :U 676 ]
-}
-[; ;lcd_lib.c: 9: RD1=0;
+[; ;keypad_lib.c: 7: {
+"7
+{
+[; ;keypad_lib.c: 8: LATB=0xe0;
+"8
+[e = _LATB -> -> 224 `i `uc ]
+[; ;keypad_lib.c: 9: switch(PORTB&0x0f)
 "9
-[e = _RD1 -> -> 0 `i `b ]
-[; ;lcd_lib.c: 11: }
+[e $U 679  ]
+[; ;keypad_lib.c: 10: {
+"10
+{
+[; ;keypad_lib.c: 11: case 0x0e: return('a');
 "11
-[e :UE 674 ]
-}
-"13
-[v _lcd_init `(v 1 ef ]
-{
-[; ;lcd_lib.c: 12: void lcd_init()
-[; ;lcd_lib.c: 13: {
-[e :U _lcd_init ]
-[f ]
-[; ;lcd_lib.c: 14: cmd(0x38);
-"14
-[e ( _cmd (1 -> -> 56 `i `uc ]
-[; ;lcd_lib.c: 15: cmd(0x01);
-"15
-[e ( _cmd (1 -> -> 1 `i `uc ]
-[; ;lcd_lib.c: 16: cmd(0x0f);
-"16
-[e ( _cmd (1 -> -> 15 `i `uc ]
-[; ;lcd_lib.c: 17: }
-"17
-[e :UE 678 ]
-}
-"20
-[v _cmd `(v 1 ef1`uc ]
-{
-[; ;lcd_lib.c: 19: void cmd(char a)
-[; ;lcd_lib.c: 20: {
-[e :U _cmd ]
-[v _a `uc 1 r1 ]
-[f ]
-"21
-[v _i `i 1 a ]
-[; ;lcd_lib.c: 21: int i;
-[; ;lcd_lib.c: 22: RD0=0;
-"22
-[e = _RD0 -> -> 0 `i `b ]
-[; ;lcd_lib.c: 23: LATC=a;
-"23
-[e = _LATC _a ]
-[; ;lcd_lib.c: 24: RD1=1;
-"24
-[e = _RD1 -> -> 1 `i `b ]
-[; ;lcd_lib.c: 25: for(i=0;i<=1000;i++);
-"25
-{
-[e = _i -> 0 `i ]
-[e $ <= _i -> 1000 `i 680  ]
-[e $U 681  ]
 [e :U 680 ]
-[e ++ _i -> 1 `i ]
-[e $ <= _i -> 1000 `i 680  ]
+[e ) -> -> 97 `ui `uc ]
+[e $UE 674  ]
+[; ;keypad_lib.c: 12: case 0x0b: return('b');
+"12
 [e :U 681 ]
+[e ) -> -> 98 `ui `uc ]
+[e $UE 674  ]
+[; ;keypad_lib.c: 13: case 0x0D: return('c');
+"13
+[e :U 682 ]
+[e ) -> -> 99 `ui `uc ]
+[e $UE 674  ]
+[; ;keypad_lib.c: 14: case 0x07: return('d');
+"14
+[e :U 683 ]
+[e ) -> -> 100 `ui `uc ]
+[e $UE 674  ]
+"15
 }
-[; ;lcd_lib.c: 26: RD1=0;
-"26
-[e = _RD1 -> -> 0 `i `b ]
-[; ;lcd_lib.c: 27: }
-"27
-[e :UE 679 ]
-}
-"30
-[v _display `(v 1 ef2`*Cuc`uc ]
+[; ;keypad_lib.c: 15: }
+[e $U 678  ]
+"9
+[e :U 679 ]
+[e [\ & -> _PORTB `i -> 15 `i , $ -> 14 `i 680
+ , $ -> 11 `i 681
+ , $ -> 13 `i 682
+ , $ -> 7 `i 683
+ 678 ]
+"15
+[e :U 678 ]
+[; ;keypad_lib.c: 16: LATB=0xD0;
+"16
+[e = _LATB -> -> 208 `i `uc ]
+[; ;keypad_lib.c: 17: switch(PORTB&0x0f)
+"17
+[e $U 685  ]
+[; ;keypad_lib.c: 18: {
+"18
 {
-[; ;lcd_lib.c: 29: void display(const char *p,char i)
-[; ;lcd_lib.c: 30: {
-[e :U _display ]
-[v _p `*Cuc 1 r1 ]
-[v _i `uc 1 r2 ]
-[f ]
-[; ;lcd_lib.c: 31: while(*p)
-"31
+[; ;keypad_lib.c: 19: case 0x0e: return('e');
+"19
+[e :U 686 ]
+[e ) -> -> 101 `ui `uc ]
+[e $UE 674  ]
+[; ;keypad_lib.c: 20: case 0x0b: return('f');
+"20
+[e :U 687 ]
+[e ) -> -> 102 `ui `uc ]
+[e $UE 674  ]
+[; ;keypad_lib.c: 21: case 0x0D: return('g');
+"21
+[e :U 688 ]
+[e ) -> -> 103 `ui `uc ]
+[e $UE 674  ]
+[; ;keypad_lib.c: 22: case 0x07: return('h');
+"22
+[e :U 689 ]
+[e ) -> -> 104 `ui `uc ]
+[e $UE 674  ]
+"23
+}
+[; ;keypad_lib.c: 23: }
 [e $U 684  ]
+"17
 [e :U 685 ]
-[; ;lcd_lib.c: 32: {
-"32
+[e [\ & -> _PORTB `i -> 15 `i , $ -> 14 `i 686
+ , $ -> 11 `i 687
+ , $ -> 13 `i 688
+ , $ -> 7 `i 689
+ 684 ]
+"23
+[e :U 684 ]
+[; ;keypad_lib.c: 24: LATB=0xB0;
+"24
+[e = _LATB -> -> 176 `i `uc ]
+[; ;keypad_lib.c: 25: switch(PORTB&0x0f)
+"25
+[e $U 691  ]
+[; ;keypad_lib.c: 26: {
+"26
 {
-[; ;lcd_lib.c: 33: if(i==8)
+[; ;keypad_lib.c: 27: case 0x0e: return('i');
+"27
+[e :U 692 ]
+[e ) -> -> 105 `ui `uc ]
+[e $UE 674  ]
+[; ;keypad_lib.c: 28: case 0x0b: return('j');
+"28
+[e :U 693 ]
+[e ) -> -> 106 `ui `uc ]
+[e $UE 674  ]
+[; ;keypad_lib.c: 29: case 0x0D: return('k');
+"29
+[e :U 694 ]
+[e ) -> -> 107 `ui `uc ]
+[e $UE 674  ]
+[; ;keypad_lib.c: 30: case 0x07: return('l');
+"30
+[e :U 695 ]
+[e ) -> -> 108 `ui `uc ]
+[e $UE 674  ]
+"31
+}
+[; ;keypad_lib.c: 31: }
+[e $U 690  ]
+"25
+[e :U 691 ]
+[e [\ & -> _PORTB `i -> 15 `i , $ -> 14 `i 692
+ , $ -> 11 `i 693
+ , $ -> 13 `i 694
+ , $ -> 7 `i 695
+ 690 ]
+"31
+[e :U 690 ]
+[; ;keypad_lib.c: 32: LATB=0x70;
+"32
+[e = _LATB -> -> 112 `i `uc ]
+[; ;keypad_lib.c: 33: switch(PORTB&0x0f)
 "33
-[e $ ! == -> _i `i -> 8 `i 687  ]
-[; ;lcd_lib.c: 34: {
+[e $U 697  ]
+[; ;keypad_lib.c: 34: {
 "34
 {
-[; ;lcd_lib.c: 35: data(*p);
+[; ;keypad_lib.c: 35: case 0x0e: return('m');
 "35
-[e ( _data (1 *U _p ]
+[e :U 698 ]
+[e ) -> -> 109 `ui `uc ]
+[e $UE 674  ]
+[; ;keypad_lib.c: 36: case 0x0b: return('n');
 "36
-}
-[; ;lcd_lib.c: 36: }
-[e $U 688  ]
+[e :U 699 ]
+[e ) -> -> 110 `ui `uc ]
+[e $UE 674  ]
+[; ;keypad_lib.c: 37: case 0x0D: return('o');
 "37
-[e :U 687 ]
-[; ;lcd_lib.c: 37: else if(i==4)
-[e $ ! == -> _i `i -> 4 `i 689  ]
-[; ;lcd_lib.c: 38: {
+[e :U 700 ]
+[e ) -> -> 111 `ui `uc ]
+[e $UE 674  ]
+[; ;keypad_lib.c: 38: case 0x07: return('p');
 "38
-{
-[; ;lcd_lib.c: 39: data4(*p);
+[e :U 701 ]
+[e ) -> -> 112 `ui `uc ]
+[e $UE 674  ]
 "39
-[e ( _data4 (1 *U _p ]
+}
+[; ;keypad_lib.c: 39: }
+[e $U 696  ]
+"33
+[e :U 697 ]
+[e [\ & -> _PORTB `i -> 15 `i , $ -> 14 `i 698
+ , $ -> 11 `i 699
+ , $ -> 13 `i 700
+ , $ -> 7 `i 701
+ 696 ]
+"39
+[e :U 696 ]
 "40
 }
-[e :U 689 ]
+[e :U 675 ]
+"6
+[e $U 676  ]
+[e :U 677 ]
+[; ;keypad_lib.c: 40: }
+[; ;keypad_lib.c: 41: }
 "41
-[e :U 688 ]
-[; ;lcd_lib.c: 40: }
-[; ;lcd_lib.c: 41: p++;
-[e ++ _p * -> -> 1 `i `x -> -> # *U _p `i `x ]
-"42
-}
-[e :U 684 ]
-"31
-[e $ != -> *U _p `i -> -> -> 0 `i `Cuc `i 685  ]
-[e :U 686 ]
-[; ;lcd_lib.c: 42: }
-[; ;lcd_lib.c: 43: }
-"43
-[e :UE 683 ]
-}
-"55
-[v _data4 `(v 1 ef1`uc ]
-{
-[; ;lcd_lib.c: 54: void data4(char a)
-[; ;lcd_lib.c: 55: {
-[e :U _data4 ]
-[v _a `uc 1 r1 ]
-[f ]
-"56
-[v _i `i 1 a ]
-[; ;lcd_lib.c: 56: int i;
-[; ;lcd_lib.c: 57: LATC=0x00;
-"57
-[e = _LATC -> -> 0 `i `uc ]
-[; ;lcd_lib.c: 58: RC0=1;
-"58
-[e = _RC0 -> -> 1 `i `b ]
-[; ;lcd_lib.c: 59: LATC=LATC|((a&0xf0)>>2);
-"59
-[e = _LATC -> | -> _LATC `i >> & -> _a `i -> 240 `i -> 2 `i `uc ]
-[; ;lcd_lib.c: 60: RC1=1;
-"60
-[e = _RC1 -> -> 1 `i `b ]
-[; ;lcd_lib.c: 61: for(i=0;i<=1000;i++);
-"61
-{
-[e = _i -> 0 `i ]
-[e $ <= _i -> 1000 `i 691  ]
-[e $U 692  ]
-[e :U 691 ]
-[e ++ _i -> 1 `i ]
-[e $ <= _i -> 1000 `i 691  ]
-[e :U 692 ]
-}
-[; ;lcd_lib.c: 62: RC1=0;
-"62
-[e = _RC1 -> -> 0 `i `b ]
-[; ;lcd_lib.c: 64: LATC=0x00;
-"64
-[e = _LATC -> -> 0 `i `uc ]
-[; ;lcd_lib.c: 65: RC0=1;
-"65
-[e = _RC0 -> -> 1 `i `b ]
-[; ;lcd_lib.c: 66: LATC=LATC|((a&0x0f)<<2);
-"66
-[e = _LATC -> | -> _LATC `i << & -> _a `i -> 15 `i -> 2 `i `uc ]
-[; ;lcd_lib.c: 67: RC1=1;
-"67
-[e = _RC1 -> -> 1 `i `b ]
-[; ;lcd_lib.c: 68: for(i=0;i<=1000;i++);
-"68
-{
-[e = _i -> 0 `i ]
-[e $ <= _i -> 1000 `i 694  ]
-[e $U 695  ]
-[e :U 694 ]
-[e ++ _i -> 1 `i ]
-[e $ <= _i -> 1000 `i 694  ]
-[e :U 695 ]
-}
-[; ;lcd_lib.c: 69: RC1=0;
-"69
-[e = _RC1 -> -> 0 `i `b ]
-[; ;lcd_lib.c: 70: }
-"70
-[e :UE 690 ]
-}
-"72
-[v _cmd4 `(v 1 ef1`uc ]
-{
-[; ;lcd_lib.c: 71: void cmd4(char a)
-[; ;lcd_lib.c: 72: {
-[e :U _cmd4 ]
-[v _a `uc 1 r1 ]
-[f ]
-"73
-[v _i `i 1 a ]
-[; ;lcd_lib.c: 73: int i;
-[; ;lcd_lib.c: 74: LATC=0x00;
-"74
-[e = _LATC -> -> 0 `i `uc ]
-[; ;lcd_lib.c: 75: RC0=0;
-"75
-[e = _RC0 -> -> 0 `i `b ]
-[; ;lcd_lib.c: 76: LATC=LATC|((a&0xf0)>>2);
-"76
-[e = _LATC -> | -> _LATC `i >> & -> _a `i -> 240 `i -> 2 `i `uc ]
-[; ;lcd_lib.c: 77: RC1=1;
-"77
-[e = _RC1 -> -> 1 `i `b ]
-[; ;lcd_lib.c: 78: for(i=0;i<=1000;i++);
-"78
-{
-[e = _i -> 0 `i ]
-[e $ <= _i -> 1000 `i 698  ]
-[e $U 699  ]
-[e :U 698 ]
-[e ++ _i -> 1 `i ]
-[e $ <= _i -> 1000 `i 698  ]
-[e :U 699 ]
-}
-[; ;lcd_lib.c: 79: RC1=0;
-"79
-[e = _RC1 -> -> 0 `i `b ]
-[; ;lcd_lib.c: 81: LATC=0x00;
-"81
-[e = _LATC -> -> 0 `i `uc ]
-[; ;lcd_lib.c: 82: RC0=0;
-"82
-[e = _RC0 -> -> 0 `i `b ]
-[; ;lcd_lib.c: 83: LATC=LATC|((a&0x0f)<<2);
-"83
-[e = _LATC -> | -> _LATC `i << & -> _a `i -> 15 `i -> 2 `i `uc ]
-[; ;lcd_lib.c: 84: RC1=1;
-"84
-[e = _RC1 -> -> 1 `i `b ]
-[; ;lcd_lib.c: 85: for(i=0;i<=1000;i++);
-"85
-{
-[e = _i -> 0 `i ]
-[e $ <= _i -> 1000 `i 701  ]
-[e $U 702  ]
-[e :U 701 ]
-[e ++ _i -> 1 `i ]
-[e $ <= _i -> 1000 `i 701  ]
-[e :U 702 ]
-}
-[; ;lcd_lib.c: 86: RC1=0;
-"86
-[e = _RC1 -> -> 0 `i `b ]
-[; ;lcd_lib.c: 87: }
-"87
-[e :UE 697 ]
+[e :UE 674 ]
 }

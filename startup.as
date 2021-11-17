@@ -8,7 +8,7 @@
 	; Compiler options:
 	;
 	; -ointro.cof -mintro.map --summary=default --output=default lcd_lib.p1 \
-	; keypad_update1.p1 --chip=18F4580 -P --runtime=default \
+	; keypad_update1.p1 keypad_lib.p1 --chip=18F4580 -P --runtime=default \
 	; --opt=default,+asm,-speed,+space,9 --warn=0 -Blarge --double=24 \
 	; --cp=16 --mode=pro -g --asmlist --errformat=Error   [%n] %f; %l.%c %s \
 	; --msgformat=Advisory[%n] %s --warnformat=Warning [%n] %f; %l.%c %s
@@ -110,6 +110,28 @@ _exit:
 
 ; bigdata psect - 0 bytes to load
 
+; data0 psect - 5 bytes to load
+GLOBAL	__Ldata0,__Lidata
+	lfsr	0,__Ldata0
+	; load TBLPTR registers with __Lidata
+	movlw	low (__Lidata)
+	movwf	tblptrl
+	movlw	high(__Lidata)
+	movwf	tblptrh
+	lfsr	1,5	; loop variable
+	call	copy_data
+
+	PSECT	end_init
 	goto	_main		;go do the main stuff
+; Copy the ROM data image to destination in RAM
+copy_data:
+	tblrd	*+
+	movff	tablat,postinc0
+	movf	postdec1,w	;decrement loop variable
+	movf	fsr1l,w
+	bnz	copy_data
+	movf	fsr1h,w
+	bnz	copy_data
+	return
 
 	END	reset_pos

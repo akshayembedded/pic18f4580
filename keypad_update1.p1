@@ -12,8 +12,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _LATC `VNuc 0 e@3979 ]
 "6 F:\online\ahmed\pic controller\lcd.h
 [v _lcd_init `(v 0 ef ]
-"148 C:\Program Files (x86)\HI-TECH Software\PICC-18\PRO\9.63\include\pic18f4580.h
-[v _LATB `VNuc 0 e@3978 ]
+"1 F:\online\ahmed\pic controller\keypad.h
+[v _keypad `(uc 0 ef ]
 "3 F:\online\ahmed\pic controller\lcd.h
 [v _data `(v 0 ef1`uc ]
 "155 C:\Program Files (x86)\HI-TECH Software\PICC-18\PRO\9.63\include\pic18f4580.h
@@ -5476,6 +5476,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.h: 5: void data4(char);
 [; ;lcd.h: 6: void lcd_init();
 [; ;lcd.h: 7: void display(const char *,char );
+[; ;keypad.h: 1: char keypad(void);
 "4 F:\online\ahmed\pic controller\keypad_update1.c
 [v _main `(v 1 ef ]
 {
@@ -5485,207 +5486,70 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 "5
 [v _i `l 1 a ]
-[; ;keypad_update1.c: 5: long i;
-[; ;keypad_update1.c: 6: ADCON1=0x0f;
 "6
-[e = _ADCON1 -> -> 15 `i `uc ]
-[; ;keypad_update1.c: 7: TRISB=0x0f;
+[v F7893 `uc -> 0 `x s ]
+[i F7893
+:U ..
+-> 97 `c
+-> 98 `c
+-> 99 `c
+-> 100 `c
+-> 0 `c
+..
+]
+[v _pass `uc 5  a ]
+[; ;keypad_update1.c: 5: long i;
+[; ;keypad_update1.c: 6: char pass[]="abcd",in[4];
+[e = _pass F7893 ]
+[v _in `uc -> 4 `i a ]
+[; ;keypad_update1.c: 7: ADCON1=0x0f;
 "7
-[e = _TRISB -> -> 15 `i `uc ]
-[; ;keypad_update1.c: 8: TRISC=0x00;
+[e = _ADCON1 -> -> 15 `i `uc ]
+[; ;keypad_update1.c: 8: TRISB=0x0f;
 "8
-[e = _TRISC -> -> 0 `i `uc ]
-[; ;keypad_update1.c: 9: TRISD=0x00;
+[e = _TRISB -> -> 15 `i `uc ]
+[; ;keypad_update1.c: 9: TRISC=0x00;
 "9
-[e = _TRISD -> -> 0 `i `uc ]
-[; ;keypad_update1.c: 10: LATC=0x00;
+[e = _TRISC -> -> 0 `i `uc ]
+[; ;keypad_update1.c: 10: TRISD=0x00;
 "10
-[e = _LATC -> -> 0 `i `uc ]
-[; ;keypad_update1.c: 11: lcd_init();
+[e = _TRISD -> -> 0 `i `uc ]
+[; ;keypad_update1.c: 11: LATC=0x00;
 "11
-[e ( _lcd_init ..  ]
-[; ;keypad_update1.c: 12: while(1)
+[e = _LATC -> -> 0 `i `uc ]
+[; ;keypad_update1.c: 12: lcd_init();
 "12
-[e :U 676 ]
-[; ;keypad_update1.c: 13: {
+[e ( _lcd_init ..  ]
+[; ;keypad_update1.c: 13: while(1)
 "13
-{
-[; ;keypad_update1.c: 14: LATB=0xe0;
+[e :U 676 ]
+[; ;keypad_update1.c: 14: {
 "14
-[e = _LATB -> -> 224 `i `uc ]
-[; ;keypad_update1.c: 15: switch(PORTB&0x0f)
+{
 "15
-[e $U 679  ]
-[; ;keypad_update1.c: 16: {
+[v _t `uc 1 a ]
+[; ;keypad_update1.c: 15: char t;
+[; ;keypad_update1.c: 16: t=keypad();
 "16
-{
-[; ;keypad_update1.c: 17: case 0x0e: data('a'); break;
+[e = _t ( _keypad ..  ]
+[; ;keypad_update1.c: 17: data(t);
 "17
-[e :U 680 ]
-[e ( _data (1 -> -> 97 `ui `uc ]
-[e $U 678  ]
-[; ;keypad_update1.c: 18: case 0x0b: data('b'); break;
+[e ( _data (1 _t ]
+[; ;keypad_update1.c: 18: while((PORTB&0x0f)!=0x0f);
 "18
-[e :U 681 ]
-[e ( _data (1 -> -> 98 `ui `uc ]
 [e $U 678  ]
-[; ;keypad_update1.c: 19: case 0x0D: data('c'); break;
-"19
-[e :U 682 ]
-[e ( _data (1 -> -> 99 `ui `uc ]
-[e $U 678  ]
-[; ;keypad_update1.c: 20: case 0x07: data('d'); break;
-"20
-[e :U 683 ]
-[e ( _data (1 -> -> 100 `ui `uc ]
-[e $U 678  ]
-"21
-}
-[; ;keypad_update1.c: 21: }
-[e $U 678  ]
-"15
 [e :U 679 ]
-[e [\ & -> _PORTB `i -> 15 `i , $ -> 14 `i 680
- , $ -> 11 `i 681
- , $ -> 13 `i 682
- , $ -> 7 `i 683
- 678 ]
-"21
 [e :U 678 ]
-[; ;keypad_update1.c: 22: LATB=0xD0;
-"22
-[e = _LATB -> -> 208 `i `uc ]
-[; ;keypad_update1.c: 23: switch(PORTB&0x0f)
-"23
-[e $U 685  ]
-[; ;keypad_update1.c: 24: {
-"24
-{
-[; ;keypad_update1.c: 25: case 0x0e: data('e'); break;
-"25
-[e :U 686 ]
-[e ( _data (1 -> -> 101 `ui `uc ]
-[e $U 684  ]
-[; ;keypad_update1.c: 26: case 0x0b: data('f'); break;
-"26
-[e :U 687 ]
-[e ( _data (1 -> -> 102 `ui `uc ]
-[e $U 684  ]
-[; ;keypad_update1.c: 27: case 0x0D: data('g'); break;
-"27
-[e :U 688 ]
-[e ( _data (1 -> -> 103 `ui `uc ]
-[e $U 684  ]
-[; ;keypad_update1.c: 28: case 0x07: data('h'); break;
-"28
-[e :U 689 ]
-[e ( _data (1 -> -> 104 `ui `uc ]
-[e $U 684  ]
-"29
-}
-[; ;keypad_update1.c: 29: }
-[e $U 684  ]
-"23
-[e :U 685 ]
-[e [\ & -> _PORTB `i -> 15 `i , $ -> 14 `i 686
- , $ -> 11 `i 687
- , $ -> 13 `i 688
- , $ -> 7 `i 689
- 684 ]
-"29
-[e :U 684 ]
-[; ;keypad_update1.c: 30: LATB=0xB0;
-"30
-[e = _LATB -> -> 176 `i `uc ]
-[; ;keypad_update1.c: 31: switch(PORTB&0x0f)
-"31
-[e $U 691  ]
-[; ;keypad_update1.c: 32: {
-"32
-{
-[; ;keypad_update1.c: 33: case 0x0e: data('i'); break;
-"33
-[e :U 692 ]
-[e ( _data (1 -> -> 105 `ui `uc ]
-[e $U 690  ]
-[; ;keypad_update1.c: 34: case 0x0b: data('j'); break;
-"34
-[e :U 693 ]
-[e ( _data (1 -> -> 106 `ui `uc ]
-[e $U 690  ]
-[; ;keypad_update1.c: 35: case 0x0D: data('k'); break;
-"35
-[e :U 694 ]
-[e ( _data (1 -> -> 107 `ui `uc ]
-[e $U 690  ]
-[; ;keypad_update1.c: 36: case 0x07: data('l'); break;
-"36
-[e :U 695 ]
-[e ( _data (1 -> -> 108 `ui `uc ]
-[e $U 690  ]
-"37
-}
-[; ;keypad_update1.c: 37: }
-[e $U 690  ]
-"31
-[e :U 691 ]
-[e [\ & -> _PORTB `i -> 15 `i , $ -> 14 `i 692
- , $ -> 11 `i 693
- , $ -> 13 `i 694
- , $ -> 7 `i 695
- 690 ]
-"37
-[e :U 690 ]
-[; ;keypad_update1.c: 38: LATB=0x70;
-"38
-[e = _LATB -> -> 112 `i `uc ]
-[; ;keypad_update1.c: 39: switch(PORTB&0x0f)
-"39
-[e $U 697  ]
-[; ;keypad_update1.c: 40: {
-"40
-{
-[; ;keypad_update1.c: 41: case 0x0e: data('m'); break;
-"41
-[e :U 698 ]
-[e ( _data (1 -> -> 109 `ui `uc ]
-[e $U 696  ]
-[; ;keypad_update1.c: 42: case 0x0b: data('n'); break;
-"42
-[e :U 699 ]
-[e ( _data (1 -> -> 110 `ui `uc ]
-[e $U 696  ]
-[; ;keypad_update1.c: 43: case 0x0D: data('o'); break;
-"43
-[e :U 700 ]
-[e ( _data (1 -> -> 111 `ui `uc ]
-[e $U 696  ]
-[; ;keypad_update1.c: 44: case 0x07: data('p'); break;
-"44
-[e :U 701 ]
-[e ( _data (1 -> -> 112 `ui `uc ]
-[e $U 696  ]
-"45
-}
-[; ;keypad_update1.c: 45: }
-[e $U 696  ]
-"39
-[e :U 697 ]
-[e [\ & -> _PORTB `i -> 15 `i , $ -> 14 `i 698
- , $ -> 11 `i 699
- , $ -> 13 `i 700
- , $ -> 7 `i 701
- 696 ]
-"45
-[e :U 696 ]
-"46
+[e $ != & -> _PORTB `i -> 15 `i -> 15 `i 679  ]
+[e :U 680 ]
+"19
 }
 [e :U 675 ]
-"12
+"13
 [e $U 676  ]
 [e :U 677 ]
-[; ;keypad_update1.c: 46: }
-[; ;keypad_update1.c: 47: }
-"47
+[; ;keypad_update1.c: 19: }
+[; ;keypad_update1.c: 20: }
+"20
 [e :UE 674 ]
 }

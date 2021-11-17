@@ -7,7 +7,7 @@ void data(char a)//
 	RD1=1;
 	for(i=0;i<=1000;i++);
 	RD1=0;
-	while(RB0==0||RB1==0||RB2==0||RB3==0);
+	
 }
 void lcd_init()
 {
