@@ -6195,7 +6195,7 @@ void data(char);
 void cmd4(char);
 void data4(char);
 void lcd_init();
-void display(const char *,char );
+void display(const char * );
 
 # 2 "F:\online\ahmed\pic controller\lcd_lib.c"
 void data(char a)
@@ -6225,23 +6225,17 @@ for(i=0;i<=1000;i++);
 RD1=0;
 }
 
-void display(const char *p,char i)
+void display(const char *p)
 {
 while(*p)
 {
-if(i==8)
-{
+
 data(*p);
-}
-else if(i==4)
-{
-data4(*p);
-}
 p++;
 }
 }
 
-# 54
+# 48
 void data4(char a)
 {
 int i;

@@ -5460,7 +5460,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.h: 4: void cmd4(char);
 [; ;lcd.h: 5: void data4(char);
 [; ;lcd.h: 6: void lcd_init();
-[; ;lcd.h: 7: void display(const char *,char );
+[; ;lcd.h: 7: void display(const char * );
 [; ;keypad.h: 1: char keypad(void);
 "5 F:\online\ahmed\pic controller\keypad_lib.c
 [v _keypad `(uc 1 ef ]
@@ -5489,12 +5489,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 680 ]
 [e ) -> -> 97 `ui `uc ]
 [e $UE 674  ]
-[; ;keypad_lib.c: 12: case 0x0b: return('b');
+[; ;keypad_lib.c: 12: case 0x0d: return('b');
 "12
 [e :U 681 ]
 [e ) -> -> 98 `ui `uc ]
 [e $UE 674  ]
-[; ;keypad_lib.c: 13: case 0x0D: return('c');
+[; ;keypad_lib.c: 13: case 0x0b: return('c');
 "13
 [e :U 682 ]
 [e ) -> -> 99 `ui `uc ]
@@ -5511,8 +5511,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "9
 [e :U 679 ]
 [e [\ & -> _PORTB `i -> 15 `i , $ -> 14 `i 680
- , $ -> 11 `i 681
- , $ -> 13 `i 682
+ , $ -> 13 `i 681
+ , $ -> 11 `i 682
  , $ -> 7 `i 683
  678 ]
 "15
@@ -5531,12 +5531,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 686 ]
 [e ) -> -> 101 `ui `uc ]
 [e $UE 674  ]
-[; ;keypad_lib.c: 20: case 0x0b: return('f');
+[; ;keypad_lib.c: 20: case 0x0d: return('f');
 "20
 [e :U 687 ]
 [e ) -> -> 102 `ui `uc ]
 [e $UE 674  ]
-[; ;keypad_lib.c: 21: case 0x0D: return('g');
+[; ;keypad_lib.c: 21: case 0x0b: return('g');
 "21
 [e :U 688 ]
 [e ) -> -> 103 `ui `uc ]
@@ -5553,8 +5553,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "17
 [e :U 685 ]
 [e [\ & -> _PORTB `i -> 15 `i , $ -> 14 `i 686
- , $ -> 11 `i 687
- , $ -> 13 `i 688
+ , $ -> 13 `i 687
+ , $ -> 11 `i 688
  , $ -> 7 `i 689
  684 ]
 "23
@@ -5573,12 +5573,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 692 ]
 [e ) -> -> 105 `ui `uc ]
 [e $UE 674  ]
-[; ;keypad_lib.c: 28: case 0x0b: return('j');
+[; ;keypad_lib.c: 28: case 0x0d: return('j');
 "28
 [e :U 693 ]
 [e ) -> -> 106 `ui `uc ]
 [e $UE 674  ]
-[; ;keypad_lib.c: 29: case 0x0D: return('k');
+[; ;keypad_lib.c: 29: case 0x0b: return('k');
 "29
 [e :U 694 ]
 [e ) -> -> 107 `ui `uc ]
@@ -5595,8 +5595,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "25
 [e :U 691 ]
 [e [\ & -> _PORTB `i -> 15 `i , $ -> 14 `i 692
- , $ -> 11 `i 693
- , $ -> 13 `i 694
+ , $ -> 13 `i 693
+ , $ -> 11 `i 694
  , $ -> 7 `i 695
  690 ]
 "31
@@ -5615,12 +5615,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 698 ]
 [e ) -> -> 109 `ui `uc ]
 [e $UE 674  ]
-[; ;keypad_lib.c: 36: case 0x0b: return('n');
+[; ;keypad_lib.c: 36: case 0x0d: return('n');
 "36
 [e :U 699 ]
 [e ) -> -> 110 `ui `uc ]
 [e $UE 674  ]
-[; ;keypad_lib.c: 37: case 0x0D: return('o');
+[; ;keypad_lib.c: 37: case 0x0b: return('o');
 "37
 [e :U 700 ]
 [e ) -> -> 111 `ui `uc ]
@@ -5637,8 +5637,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "33
 [e :U 697 ]
 [e [\ & -> _PORTB `i -> 15 `i , $ -> 14 `i 698
- , $ -> 11 `i 699
- , $ -> 13 `i 700
+ , $ -> 13 `i 699
+ , $ -> 11 `i 700
  , $ -> 7 `i 701
  696 ]
 "39

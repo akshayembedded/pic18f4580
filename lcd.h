@@ -4,4 +4,4 @@ void data(char);
 void cmd4(char);
 void data4(char);
 void lcd_init();
-void display(const char *,char );
+void display(const char * );

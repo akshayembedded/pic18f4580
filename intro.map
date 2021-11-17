@@ -27,41 +27,48 @@ Machine type is 18F4580
 
 Call graph: (short form)
 
-*_main size 0,7 offset 0
-*    _lcd_init size 0,1 offset 7
-*        _cmd size 1,2 offset 8
-     _keypad size 0,3 offset 7
-     _data size 1,2 offset 7
+*_main size 0,15 offset 0
+     _lcd_init size 0,1 offset 15
+         _cmd size 1,2 offset 16
+     _cmd size 1,2 offset 16
+*    _display size 2,0 offset 15
+*        _data size 1,2 offset 17
+     _keypad size 0,3 offset 15
+*    _data size 1,2 offset 17
 
 Estimated maximum call depth: 2
 
 
                 Name          Link     Load   Length Selector Space Scale
 startup.obj     init             0        0       14       0     0
-                end_init        14       14       16       0     0
-intro.obj       idata         7FFA     7FFA        5    3FFD     0
-                text4         7E20     7E20       54    3F10     0
-                text0         7E74     7E74       5A    3F3A     0
-                text1         7ECE     7ECE      12C    3F67     0
-                text3         7D8E     7D8E       3E    3EC7     0
-                text2         7DCC     7DCC       54    3EE6     0
+                end_init        14       14       1E       0     0
+intro.obj       smallcons      600      600       34     300     0
+                idata          634      634        5     31A     0
+                text5          A8E      A8E       54     31D     0
+                text1          AE2      AE2       3E     31D     0
+                text0          63A      63A      2D4     31D     0
+                text4          A3A      A3A       54     31D     0
+                text3          B20      B20       3E     31D     0
+                text2          90E      90E      12C     31D     0
 
-COMMON          param1         100      100        B     100     1
+COMMON          param1         100      100       14     100     1
 
 TOTAL           Name          Link     Load   Length  Space
         CLASS   CODE           
                 init             0        0       14     0
-                end_init        14       14       16     0
-                idata         7FFA     7FFA        5     0
-                text4         7E20     7E20       54     0
-                text0         7E74     7E74       5A     0
-                text1         7ECE     7ECE      12C     0
-                text3         7D8E     7D8E       3E     0
-                text2         7DCC     7DCC       54     0
+                end_init        14       14       1E     0
+                idata          634      634        5     0
+                text5          A8E      A8E       54     0
+                text1          AE2      AE2       3E     0
+                text0          63A      63A      2D4     0
+                text4          A3A      A3A       54     0
+                text3          B20      B20       3E     0
+                text2          90E      90E      12C     0
 
         CLASS   CONST          
 
         CLASS   SMALLCONST     
+                smallcons      600      600       34     0
 
         CLASS   MEDIUMCONST    
 
@@ -77,7 +84,7 @@ TOTAL           Name          Link     Load   Length  Space
         CLASS   BANK0          
 
         CLASS   BANK1          
-                param1         100      100        B     1
+                param1         100      100       14     1
 
         CLASS   BANK2          
 
@@ -101,120 +108,123 @@ TOTAL           Name          Link     Load   Length  Space
 
 SEGMENTS        Name           Load    Length   Top     Selector    Space Class
 
-                reset_vec       000000  00002A  00002A         0       0  CODE    
-                param1          000100  00000B  00010B       100       1  BANK1   
-                text3           007D8E  00003E  007DCC      3EC7       0  CODE    
-                text2           007DCC  000054  007E20      3EE6       0  CODE    
-                text4           007E20  000054  007E74      3F10       0  CODE    
-                text0           007E74  00005A  007ECE      3F3A       0  CODE    
-                text1           007ECE  00012C  007FFA      3F67       0  CODE    
-                idata           007FFA  000005  007FFF      3FFD       0  CODE    
+                reset_vec       000000  000032  000032         0       0  CODE    
+                param1          000100  000014  000114       100       1  BANK1   
+                smallconst      000600  000034  000634       300       0  SMALLCON
+                idata           000634  000005  000639       31A       0  CODE    
+                irdata          00063A  000524  000B5E       31D       0  CODE    
 
 
 UNUSED ADDRESS RANGES
 
         BANK0            000005-0000FF
-        BANK1            00010B-0001FF
+        BANK1            000114-0001FF
         BANK2            000200-0002FF
         BANK3            000300-0003FF
         BANK4            000400-0004FF
         BANK5            000500-0005FF
         BIGRAM           000005-0000FF
-                         00010B-0005FF
-        CODE             00002A-007D8D
-                         007FFF-007FFF
+                         000114-0005FF
+        CODE             000032-0005FF
+                         000639-000639
+                         000B5E-007FFF
         COMRAM           000005-00005F
         CONFIG           300000-30000D
-        CONST            00002A-007D8D
-                         007FFF-007FFF
+        CONST            000032-0005FF
+                         000639-000639
+                         000B5E-007FFF
         EEDATA           F00000-F000FF
         IDLOC            200000-200007
-        MEDIUMCONST      000600-007D8D
-                         007FFF-007FFF
+        MEDIUMCONST      000639-000639
+                         000B5E-007FFF
         NVRAM            000500-0005FF
         RAM              000005-0000FF
-                         00010B-0005FF
-        SMALLCONST       000600-007D8D
-                         007FFF-007FFF
+                         000114-0005FF
+        SMALLCONST       000639-000639
+                         000B5E-007FFF
 
                                   Symbol Table
 
-??_cmd            param1       000109  ??_data           param1       000108
-??_keypad         param1       000107  ??_lcd_init       param1       000107
-??_main           param1       000100  ?_cmd             param1       000108
-?_data            param1       000107  ?_keypad          param1       000107
-?_lcd_init        param1       000107  ?_main            param1       000100
-F7893             (abs)        000000  _ADCON1           (abs)        000FC1
+??_cmd            param1       000111  ??_data           param1       000112
+??_display        param1       000111  ??_keypad         param1       00010F
+??_lcd_init       param1       00010F  ??_main           param1       000100
+?_cmd             param1       000110  ?_data            param1       000111
+?_display         param1       00010F  ?_keypad          param1       00010F
+?_lcd_init        param1       00010F  ?_main            param1       000100
+F7892             (abs)        000000  _ADCON1           (abs)        000FC1
 _LATB             (abs)        000F8A  _LATC             (abs)        000F8B
 _PORTB            (abs)        000F81  _RC0              (abs)        007C10
 _RC1              (abs)        007C11  _RD0              (abs)        007C18
 _RD1              (abs)        007C19  _TRISB            (abs)        000F93
 _TRISC            (abs)        000F94  _TRISD            (abs)        000F95
 __Bnvbit          nvbit        000005  __Brbit           rbit         000005
-__HRAM            (abs)        000000  __Hbigbss         bigbss       00010B
-__Hbigdata        bigdata      00010B  __Hbss            bss          000005
-__Hclrtext        clrtext      008000  __Hconfig         config       300000
-__Hconst          const        00002A  __Hdata           data         008000
+__HRAM            (abs)        000000  __Hbigbss         bigbss       000114
+__Hbigdata        bigdata      000114  __Hbss            bss          000005
+__Hclrtext        clrtext      00063A  __Hconfig         config       300000
+__Hconst          const        000634  __Hdata           data         00063A
 __Hdata0          (abs)        000005  __Heeprom_data    eeprom_data  F00000
-__Hend_init       end_init     00002A  __Hfarbss         farbss       000000
-__Hfardata        fardata      000000  __Hibigdata       ibigdata     008000
-__Hidata          idata        007FFF  __Hidloc          idloc        200000
-__Hifardata       ifardata     008000  __Hinit           init         000014
+__Hend_init       end_init     000032  __Hfarbss         farbss       000000
+__Hfardata        fardata      000000  __Hibigdata       ibigdata     00063A
+__Hidata          idata        000639  __Hidloc          idloc        200000
+__Hifardata       ifardata     00063A  __Hinit           init         000014
 __Hintcode        intcode      000000  __Hintcodelo      intcodelo    000000
-__Hintentry       intentry     008000  __Hintret         intret       008000
-__Hintsave_regs   intsave_regs 00010B  __Hirdata         irdata       008000
-__Hmediumconst    mediumconst  000600  __Hnvbit          nvbit        000028
-__Hnvram          nvram        008000  __Hnvrram         nvrram       000005
-__Hparam          param1       00010B  __Hparam0         param0       008000
-__Hparam1         param1       00010B  __Hparam2         param2       008000
-__Hparam3         param3       008000  __Hparam4         param4       008000
-__Hparam5         param5       008000  __Hpowerup        powerup      000000
+__Hintentry       intentry     00063A  __Hintret         intret       00063A
+__Hintsave_regs   intsave_regs 000114  __Hirdata         irdata       00063A
+__Hmediumconst    mediumconst  000634  __Hnvbit          nvbit        000028
+__Hnvram          nvram        00063A  __Hnvrram         nvrram       000005
+__Hparam          param1       000114  __Hparam0         param0       00063A
+__Hparam1         param1       000114  __Hparam2         param2       00063A
+__Hparam3         param3       00063A  __Hparam4         param4       00063A
+__Hparam5         param5       00063A  __Hpowerup        powerup      000000
 __Hramtop         ramtop       000600  __Hrbit           rbit         000028
 __Hrbss           rbss         000005  __Hrdata          rdata        000005
-__Hreset_vec      reset_vec    000000  __Hrparam         rparam       008000
-__Hsmallconst     smallconst   000600  __Hstruct         struct       000005
-__Htemp           temp         000005  __Htext           text         008000
-__Htext0          text0        008000  __Htext1          text1        008000
-__Htext2          text2        008000  __Htext3          text3        008000
-__Htext4          text4        008000  __Htext5          text5        008000
-__LRAM            (abs)        000001  __Lbigbss         bigbss       00010B
-__Lbigdata        bigdata      00010B  __Lbss            bss          000005
-__Lclrtext        clrtext      008000  __Lconfig         config       300000
-__Lconst          const        00002A  __Ldata           (abs)        000000
-__Ldata0          (abs)        000000  __Leeprom_data    eeprom_data  F00000
-__Lend_init       end_init     000014  __Lfarbss         farbss       000000
-__Lfardata        fardata      000000  __Libigdata       ibigdata     008000
-__Lidata          idata        007FFA  __Lidloc          idloc        200000
-__Lifardata       ifardata     008000  __Linit           init         000000
-__Lintcode        intcode      000000  __Lintcodelo      intcodelo    000000
-__Lintentry       intentry     008000  __Lintret         intret       008000
-__Lintsave_regs   intsave_regs 00010B  __Lirdata         irdata       008000
-__Lmediumconst    mediumconst  000600  __Lnvbit          nvbit        000028
-__Lnvram          nvram        008000  __Lnvrram         nvrram       000005
-__Lparam          param1       000100  __Lparam0         param0       008000
-__Lparam1         param1       000100  __Lparam2         param2       008000
-__Lparam3         param3       008000  __Lparam4         param4       008000
-__Lparam5         param5       008000  __Lpowerup        powerup      000000
-__Lramtop         ramtop       000600  __Lrbit           rbit         000028
-__Lrbss           rbss         000005  __Lrdata          rdata        000005
-__Lreset_vec      reset_vec    000000  __Lrparam         rparam       008000
-__Lsmallconst     smallconst   000600  __Lstruct         struct       000005
-__Ltemp           temp         000005  __Ltext           text         008000
-__Ltext0          text0        008000  __Ltext1          text1        008000
-__Ltext2          text2        008000  __Ltext3          text3        008000
-__Ltext4          text4        008000  __Ltext5          text5        008000
+__Hreset_vec      reset_vec    000000  __Hrparam         rparam       00063A
+__Hsmallconst     smallconst   000634  __Hstruct         struct       000005
+__Htemp           temp         000005  __Htext           text         00063A
+__Htext0          text0        00063A  __Htext1          text1        00063A
+__Htext2          text2        00063A  __Htext3          text3        00063A
+__Htext4          text4        00063A  __Htext5          text5        00063A
+__Htext6          text6        00063A  __LRAM            (abs)        000001
+__Lbigbss         bigbss       000114  __Lbigdata        bigdata      000114
+__Lbss            bss          000005  __Lclrtext        clrtext      00063A
+__Lconfig         config       300000  __Lconst          const        000634
+__Ldata           (abs)        000000  __Ldata0          (abs)        000000
+__Leeprom_data    eeprom_data  F00000  __Lend_init       end_init     000014
+__Lfarbss         farbss       000000  __Lfardata        fardata      000000
+__Libigdata       ibigdata     00063A  __Lidata          idata        000634
+__Lidloc          idloc        200000  __Lifardata       ifardata     00063A
+__Linit           init         000000  __Lintcode        intcode      000000
+__Lintcodelo      intcodelo    000000  __Lintentry       intentry     00063A
+__Lintret         intret       00063A  __Lintsave_regs   intsave_regs 000114
+__Lirdata         irdata       00063A  __Lmediumconst    mediumconst  000634
+__Lnvbit          nvbit        000028  __Lnvram          nvram        00063A
+__Lnvrram         nvrram       000005  __Lparam          param1       000100
+__Lparam0         param0       00063A  __Lparam1         param1       000100
+__Lparam2         param2       00063A  __Lparam3         param3       00063A
+__Lparam4         param4       00063A  __Lparam5         param5       00063A
+__Lpowerup        powerup      000000  __Lramtop         ramtop       000600
+__Lrbit           rbit         000028  __Lrbss           rbss         000005
+__Lrdata          rdata        000005  __Lreset_vec      reset_vec    000000
+__Lrparam         rparam       00063A  __Lsmallconst     smallconst   000600
+__Lstruct         struct       000005  __Ltemp           temp         000005
+__Ltext           text         00063A  __Ltext0          text0        00063A
+__Ltext1          text1        00063A  __Ltext2          text2        00063A
+__Ltext3          text3        00063A  __Ltext4          text4        00063A
+__Ltext5          text5        00063A  __Ltext6          text6        00063A
 __S0              (abs)        F00000  __S1              (abs)        000500
-__accesstop       (abs)        000060  __activetblptr    (abs)        000000
-__end_of_cmd      text4        007E74  __end_of_data     text2        007E20
-__end_of_keypad   text1        007FFA  __end_of_lcd_init text3        007DCC
-__end_of_main     text0        007ECE  __mediumconst     mediumconst  000600
-__ramtop          ramtop       000600  __smallconst      smallconst   000600
-_cmd              text4        007E20  _data             text2        007DCC
-_exit             init         000000  _keypad           text1        007ECE
-_lcd_init         text3        007D8E  _main             text0        007E74
-cmd@a             param1       000108  cmd@i             param1       000109
-data@a            param1       000107  data@i            param1       000108
-intlevel0         text         008000  intlevel1         text         008000
-intlevel2         text         008000  intlevel3         text         008000
-main@pass         param1       000100  main@t            param1       000105
-start             init         000000  
+__accesstop       (abs)        000060  __activetblptr    (abs)        000001
+__end_of_cmd      text5        000AE2  __end_of_data     text4        000A8E
+__end_of_display  text1        000B20  __end_of_keypad   text2        000A3A
+__end_of_lcd_init text3        000B5E  __end_of_main     text0        00090E
+__mediumconst     mediumconst  000634  __ramtop          ramtop       000600
+__smallconst      smallconst   000600  _cmd              text5        000A8E
+_data             text4        000A3A  _display          text1        000AE2
+_exit             init         000000  _keypad           text2        00090E
+_lcd_init         text3        000B20  _main             text0        00063A
+cmd@a             param1       000110  cmd@i             param1       000111
+data@a            param1       000111  data@i            param1       000112
+display@p         param1       00010F  intlevel0         text         000B5E
+intlevel1         text         000B5E  intlevel2         text         000B5E
+intlevel3         text         000B5E  main@i            param1       000100
+main@in           param1       000104  main@pass         param1       000108
+main@t            param1       00010D  start             init         000000

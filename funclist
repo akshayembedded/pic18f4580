@@ -1,6 +1,7 @@
-_lcd_init: CODE, 32142 0 62
-_keypad: CODE, 32462 0 300
-_main: CODE, 32372 0 90
-_data: CODE, 32204 0 84
-_cmd: CODE, 32288 0 84
-Total: 620
+_lcd_init: CODE, 2848 0 62
+_keypad: CODE, 2318 0 300
+_display: CODE, 2786 0 62
+_main: CODE, 1594 0 724
+_data: CODE, 2618 0 84
+_cmd: CODE, 2702 0 84
+Total: 1316

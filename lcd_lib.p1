@@ -7,8 +7,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _RD1 `VNb 0 e@31769 ]
 "2 F:\online\ahmed\pic controller\lcd.h
 [v _cmd `(v 0 ef1`uc ]
-"5 F:\online\ahmed\pic controller\lcd.h
-[v _data4 `(v 0 ef1`uc ]
 "678 C:\Program Files (x86)\HI-TECH Software\PICC-18\PRO\9.63\include\pic18f4580.h
 [v _RC0 `VNb 0 e@31760 ]
 "679 C:\Program Files (x86)\HI-TECH Software\PICC-18\PRO\9.63\include\pic18f4580.h
@@ -5470,7 +5468,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.h: 4: void cmd4(char);
 [; ;lcd.h: 5: void data4(char);
 [; ;lcd.h: 6: void lcd_init();
-[; ;lcd.h: 7: void display(const char *,char );
+[; ;lcd.h: 7: void display(const char * );
 "3 F:\online\ahmed\pic controller\lcd_lib.c
 [v _data `(v 1 ef1`uc ]
 {
@@ -5568,13 +5566,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 679 ]
 }
 "30
-[v _display `(v 1 ef2`*Cuc`uc ]
+[v _display `(v 1 ef1`*Cuc ]
 {
-[; ;lcd_lib.c: 29: void display(const char *p,char i)
+[; ;lcd_lib.c: 29: void display(const char *p)
 [; ;lcd_lib.c: 30: {
 [e :U _display ]
 [v _p `*Cuc 1 r1 ]
-[v _i `uc 1 r2 ]
 [f ]
 [; ;lcd_lib.c: 31: while(*p)
 "31
@@ -5583,73 +5580,74 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd_lib.c: 32: {
 "32
 {
-[; ;lcd_lib.c: 33: if(i==8)
-"33
-[e $ ! == -> _i `i -> 8 `i 687  ]
-[; ;lcd_lib.c: 34: {
+[; ;lcd_lib.c: 34: data(*p);
 "34
-{
-[; ;lcd_lib.c: 35: data(*p);
-"35
 [e ( _data (1 *U _p ]
-"36
-}
-[; ;lcd_lib.c: 36: }
-[e $U 688  ]
-"37
-[e :U 687 ]
-[; ;lcd_lib.c: 37: else if(i==4)
-[e $ ! == -> _i `i -> 4 `i 689  ]
-[; ;lcd_lib.c: 38: {
-"38
-{
-[; ;lcd_lib.c: 39: data4(*p);
-"39
-[e ( _data4 (1 *U _p ]
-"40
-}
-[e :U 689 ]
-"41
-[e :U 688 ]
-[; ;lcd_lib.c: 40: }
-[; ;lcd_lib.c: 41: p++;
+[; ;lcd_lib.c: 35: p++;
+"35
 [e ++ _p * -> -> 1 `i `x -> -> # *U _p `i `x ]
-"42
+"36
 }
 [e :U 684 ]
 "31
 [e $ != -> *U _p `i -> -> -> 0 `i `Cuc `i 685  ]
 [e :U 686 ]
-[; ;lcd_lib.c: 42: }
-[; ;lcd_lib.c: 43: }
-"43
+[; ;lcd_lib.c: 36: }
+[; ;lcd_lib.c: 37: }
+"37
 [e :UE 683 ]
 }
-"55
+"49
 [v _data4 `(v 1 ef1`uc ]
 {
-[; ;lcd_lib.c: 54: void data4(char a)
-[; ;lcd_lib.c: 55: {
+[; ;lcd_lib.c: 48: void data4(char a)
+[; ;lcd_lib.c: 49: {
 [e :U _data4 ]
 [v _a `uc 1 r1 ]
 [f ]
-"56
+"50
 [v _i `i 1 a ]
-[; ;lcd_lib.c: 56: int i;
-[; ;lcd_lib.c: 57: LATC=0x00;
-"57
+[; ;lcd_lib.c: 50: int i;
+[; ;lcd_lib.c: 51: LATC=0x00;
+"51
 [e = _LATC -> -> 0 `i `uc ]
-[; ;lcd_lib.c: 58: RC0=1;
-"58
+[; ;lcd_lib.c: 52: RC0=1;
+"52
 [e = _RC0 -> -> 1 `i `b ]
-[; ;lcd_lib.c: 59: LATC=LATC|((a&0xf0)>>2);
-"59
+[; ;lcd_lib.c: 53: LATC=LATC|((a&0xf0)>>2);
+"53
 [e = _LATC -> | -> _LATC `i >> & -> _a `i -> 240 `i -> 2 `i `uc ]
-[; ;lcd_lib.c: 60: RC1=1;
-"60
+[; ;lcd_lib.c: 54: RC1=1;
+"54
 [e = _RC1 -> -> 1 `i `b ]
-[; ;lcd_lib.c: 61: for(i=0;i<=1000;i++);
+[; ;lcd_lib.c: 55: for(i=0;i<=1000;i++);
+"55
+{
+[e = _i -> 0 `i ]
+[e $ <= _i -> 1000 `i 688  ]
+[e $U 689  ]
+[e :U 688 ]
+[e ++ _i -> 1 `i ]
+[e $ <= _i -> 1000 `i 688  ]
+[e :U 689 ]
+}
+[; ;lcd_lib.c: 56: RC1=0;
+"56
+[e = _RC1 -> -> 0 `i `b ]
+[; ;lcd_lib.c: 58: LATC=0x00;
+"58
+[e = _LATC -> -> 0 `i `uc ]
+[; ;lcd_lib.c: 59: RC0=1;
+"59
+[e = _RC0 -> -> 1 `i `b ]
+[; ;lcd_lib.c: 60: LATC=LATC|((a&0x0f)<<2);
+"60
+[e = _LATC -> | -> _LATC `i << & -> _a `i -> 15 `i -> 2 `i `uc ]
+[; ;lcd_lib.c: 61: RC1=1;
 "61
+[e = _RC1 -> -> 1 `i `b ]
+[; ;lcd_lib.c: 62: for(i=0;i<=1000;i++);
+"62
 {
 [e = _i -> 0 `i ]
 [e $ <= _i -> 1000 `i 691  ]
@@ -5659,64 +5657,64 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ <= _i -> 1000 `i 691  ]
 [e :U 692 ]
 }
-[; ;lcd_lib.c: 62: RC1=0;
-"62
+[; ;lcd_lib.c: 63: RC1=0;
+"63
 [e = _RC1 -> -> 0 `i `b ]
-[; ;lcd_lib.c: 64: LATC=0x00;
+[; ;lcd_lib.c: 64: }
 "64
-[e = _LATC -> -> 0 `i `uc ]
-[; ;lcd_lib.c: 65: RC0=1;
-"65
-[e = _RC0 -> -> 1 `i `b ]
-[; ;lcd_lib.c: 66: LATC=LATC|((a&0x0f)<<2);
+[e :UE 687 ]
+}
 "66
-[e = _LATC -> | -> _LATC `i << & -> _a `i -> 15 `i -> 2 `i `uc ]
-[; ;lcd_lib.c: 67: RC1=1;
-"67
-[e = _RC1 -> -> 1 `i `b ]
-[; ;lcd_lib.c: 68: for(i=0;i<=1000;i++);
-"68
-{
-[e = _i -> 0 `i ]
-[e $ <= _i -> 1000 `i 694  ]
-[e $U 695  ]
-[e :U 694 ]
-[e ++ _i -> 1 `i ]
-[e $ <= _i -> 1000 `i 694  ]
-[e :U 695 ]
-}
-[; ;lcd_lib.c: 69: RC1=0;
-"69
-[e = _RC1 -> -> 0 `i `b ]
-[; ;lcd_lib.c: 70: }
-"70
-[e :UE 690 ]
-}
-"72
 [v _cmd4 `(v 1 ef1`uc ]
 {
-[; ;lcd_lib.c: 71: void cmd4(char a)
-[; ;lcd_lib.c: 72: {
+[; ;lcd_lib.c: 65: void cmd4(char a)
+[; ;lcd_lib.c: 66: {
 [e :U _cmd4 ]
 [v _a `uc 1 r1 ]
 [f ]
-"73
+"67
 [v _i `i 1 a ]
-[; ;lcd_lib.c: 73: int i;
-[; ;lcd_lib.c: 74: LATC=0x00;
-"74
+[; ;lcd_lib.c: 67: int i;
+[; ;lcd_lib.c: 68: LATC=0x00;
+"68
 [e = _LATC -> -> 0 `i `uc ]
-[; ;lcd_lib.c: 75: RC0=0;
-"75
+[; ;lcd_lib.c: 69: RC0=0;
+"69
 [e = _RC0 -> -> 0 `i `b ]
-[; ;lcd_lib.c: 76: LATC=LATC|((a&0xf0)>>2);
-"76
+[; ;lcd_lib.c: 70: LATC=LATC|((a&0xf0)>>2);
+"70
 [e = _LATC -> | -> _LATC `i >> & -> _a `i -> 240 `i -> 2 `i `uc ]
-[; ;lcd_lib.c: 77: RC1=1;
-"77
+[; ;lcd_lib.c: 71: RC1=1;
+"71
 [e = _RC1 -> -> 1 `i `b ]
-[; ;lcd_lib.c: 78: for(i=0;i<=1000;i++);
+[; ;lcd_lib.c: 72: for(i=0;i<=1000;i++);
+"72
+{
+[e = _i -> 0 `i ]
+[e $ <= _i -> 1000 `i 695  ]
+[e $U 696  ]
+[e :U 695 ]
+[e ++ _i -> 1 `i ]
+[e $ <= _i -> 1000 `i 695  ]
+[e :U 696 ]
+}
+[; ;lcd_lib.c: 73: RC1=0;
+"73
+[e = _RC1 -> -> 0 `i `b ]
+[; ;lcd_lib.c: 75: LATC=0x00;
+"75
+[e = _LATC -> -> 0 `i `uc ]
+[; ;lcd_lib.c: 76: RC0=0;
+"76
+[e = _RC0 -> -> 0 `i `b ]
+[; ;lcd_lib.c: 77: LATC=LATC|((a&0x0f)<<2);
+"77
+[e = _LATC -> | -> _LATC `i << & -> _a `i -> 15 `i -> 2 `i `uc ]
+[; ;lcd_lib.c: 78: RC1=1;
 "78
+[e = _RC1 -> -> 1 `i `b ]
+[; ;lcd_lib.c: 79: for(i=0;i<=1000;i++);
+"79
 {
 [e = _i -> 0 `i ]
 [e $ <= _i -> 1000 `i 698  ]
@@ -5726,36 +5724,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ <= _i -> 1000 `i 698  ]
 [e :U 699 ]
 }
-[; ;lcd_lib.c: 79: RC1=0;
-"79
+[; ;lcd_lib.c: 80: RC1=0;
+"80
 [e = _RC1 -> -> 0 `i `b ]
-[; ;lcd_lib.c: 81: LATC=0x00;
+[; ;lcd_lib.c: 81: }
 "81
-[e = _LATC -> -> 0 `i `uc ]
-[; ;lcd_lib.c: 82: RC0=0;
-"82
-[e = _RC0 -> -> 0 `i `b ]
-[; ;lcd_lib.c: 83: LATC=LATC|((a&0x0f)<<2);
-"83
-[e = _LATC -> | -> _LATC `i << & -> _a `i -> 15 `i -> 2 `i `uc ]
-[; ;lcd_lib.c: 84: RC1=1;
-"84
-[e = _RC1 -> -> 1 `i `b ]
-[; ;lcd_lib.c: 85: for(i=0;i<=1000;i++);
-"85
-{
-[e = _i -> 0 `i ]
-[e $ <= _i -> 1000 `i 701  ]
-[e $U 702  ]
-[e :U 701 ]
-[e ++ _i -> 1 `i ]
-[e $ <= _i -> 1000 `i 701  ]
-[e :U 702 ]
-}
-[; ;lcd_lib.c: 86: RC1=0;
-"86
-[e = _RC1 -> -> 0 `i `b ]
-[; ;lcd_lib.c: 87: }
-"87
-[e :UE 697 ]
+[e :UE 694 ]
 }

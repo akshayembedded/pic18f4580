@@ -1,7 +1,7 @@
 
 
 HI-TECH Software Macro Assembler (PIC18) V9.63PL3 build 4692 
-                                                       Wed Nov 17 08:43:46 2021
+                                                       Wed Nov 17 09:00:17 2021
 
 
      1                           
@@ -75,11 +75,11 @@ HI-TECH Software Macro Assembler (PIC18) V9.63PL3 build 4692
     57                           	psect	init,class=CODE,delta=1,reloc=2
     58                           	psect	text,class=CODE,delta=1,reloc=2
     59                           GLOBAL	intlevel0,intlevel1,intlevel2
-    60  008000                     intlevel0:
-    61  008000                     intlevel1:
-    62  008000                     intlevel2:
+    60  000B5E                     intlevel0:
+    61  000B5E                     intlevel1:
+    62  000B5E                     intlevel2:
     63                           GLOBAL	intlevel3
-    64  008000                     intlevel3:
+    64  000B5E                     intlevel3:
     65                           	psect	end_init,class=CODE,delta=1,reloc=2
     66                           	psect	clrtext,class=CODE,delta=1,reloc=2
     67                           
@@ -132,35 +132,41 @@ HI-TECH Software Macro Assembler (PIC18) V9.63PL3 build 4692
    114                           GLOBAL	__Ldata0,__Lidata
    115  000000  EE00  F000         	lfsr	0,__Ldata0
    116                           	; load TBLPTR registers with __Lidata
-   117  000004  0EFA               	movlw	low (__Lidata)
+   117  000004  0E34               	movlw	low (__Lidata)
    118  000006  6EF6               	movwf	tblptrl
-   119  000008  0E7F               	movlw	high(__Lidata)
+   119  000008  0E06               	movlw	high(__Lidata)
    120  00000A  6EF7               	movwf	tblptrh
    121  00000C  EE10 F005          	lfsr	1,5	; loop variable
-   122  000010  EC0C  F000         	call	copy_data
+   122  000010  EC10  F000         	call	copy_data
    123                           
    124                           	PSECT	end_init
-   125  000014  EF3A  F03F         	goto	_main		;go do the main stuff
-   126                           ; Copy the ROM data image to destination in RAM
-   127  000018                     copy_data:
-   128  000018  0009               	tblrd	*+
-   129  00001A  CFF5 FFEE          	movff	tablat,postinc0
-   130  00001E  50E5               	movf	postdec1,w	;decrement loop variable
-   131  000020  50E1               	movf	fsr1l,w
-   132  000022  E1FA               	bnz	copy_data
-   133  000024  50E2               	movf	fsr1h,w
-   134  000026  E1F8               	bnz	copy_data
-   135  000028  0012               	return
+   125                           	GLOBAL	__Lsmallconst
+   126  000014  0E00               	movlw	low highword(__Lsmallconst)
+   127  000016  6EF8               	movwf	tblptru
+   128  000018  0E06               	movlw	high(__Lsmallconst)
+   129  00001A  6EF7               	movwf	tblptrh
+   130  00001C  EF1D  F003         	goto	_main		;go do the main stuff
+   131                           ; Copy the ROM data image to destination in RAM
+   132  000020                     copy_data:
+   133  000020  0009               	tblrd	*+
+   134  000022  CFF5 FFEE          	movff	tablat,postinc0
+   135  000026  50E5               	movf	postdec1,w	;decrement loop variable
+   136  000028  50E1               	movf	fsr1l,w
+   137  00002A  E1FA               	bnz	copy_data
+   138  00002C  50E2               	movf	fsr1h,w
+   139  00002E  E1F8               	bnz	copy_data
+   140  000030  0012               	return
 
 
 HI-TECH Software PICC-18 Macro Assembler V9.63PL3 build 4692 
-Symbol Table                                           Wed Nov 17 08:43:46 2021
+Symbol Table                                           Wed Nov 17 09:00:17 2021
 
-        __S1 0500         _main 7E74         _exit 0000  
-       fsr1h 000FE2         fsr1l 000FE1         start 0000  
-      __HRAM 0000        __LRAM 0001        tablat 000FF5  
-     tblptrh 000FF7       tblptrl 000FF6   __accesstop 000060  
-    __Ldata0 0000      __Lidata 7FFA      __ramtop 0600  
-    postdec1 000FE5      postinc0 000FEE     copy_data 0018  
-   intlevel0 8000     intlevel1 8000     intlevel2 8000  
-   intlevel3 8000     reset_pos 0000  
+         __S1 0500          _main 063A          _exit 0000  
+        fsr1h 000FE2          fsr1l 000FE1          start 0000  
+       __HRAM 0000         __LRAM 0001         tablat 000FF5  
+      tblptrh 000FF7        tblptrl 000FF6        tblptru 000FF8  
+  __accesstop 000060       __Ldata0 0000       __Lidata 0634  
+     __ramtop 0600       postdec1 000FE5       postinc0 000FEE  
+__Lsmallconst 0600      copy_data 0020      intlevel0 0B5E  
+    intlevel1 0B5E      intlevel2 0B5E      intlevel3 0B5E  
+    reset_pos 0000  

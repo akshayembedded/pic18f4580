@@ -26,18 +26,12 @@ void cmd(char a)//
 	RD1=0;
 }
 
-void display(const char *p,char i)
+void display(const char *p)
 {
 	while(*p)
 	{
-		if(i==8)
-		{
+	
 		data(*p);
-		}
-		else if(i==4)
-		{
-		data4(*p);
-		}
 		p++;
 	}
 }

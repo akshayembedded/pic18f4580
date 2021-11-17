@@ -12,6 +12,8 @@
 [v _lcd_init `(v  1 e 0 0 ]
 "20
 [v _cmd `(v  1 e 0 0 ]
+"30
+[v _display `(v  1 e 0 0 ]
 "90 C:\Program Files (x86)\HI-TECH Software\PICC-18\PRO\9.63\include\pic18f4580.h
 [v _ADCON1 `Nuc  1 e 1 @4033 ]
 "138
@@ -35,22 +37,36 @@
 "679
 [v _RC1 `VNb  1 e 0 @31761 ]
 "6 F:\online\ahmed\pic controller\keypad_update1.c
-[v F7893 `[5]uc  1 s 5 @0 ]
+[v F7892 `[5]uc  1 s 5 @0 ]
 "4
 [v _main `(v  1 e 0 0 ]
 {
+"5
+[v _i `l  1 a 4 0 ]
 "6
-[v _pass `[5]uc  1 a 5 0 ]
-"15
-[v _t `uc  1 a 1 5 ]
-"20
-} 6
+[v _in `[4]uc  1 a 4 4 ]
+[v _pass `[5]uc  1 a 5 8 ]
+"16
+[v _t `uc  1 a 1 13 ]
+"44
+} 14
+"30 F:\online\ahmed\pic controller\lcd_lib.c
+[v _display `(v  1 e 0 0 ]
+{
+[v _p `*.cDCuc  1 p 2 0 ]
+"37
+} 0
 "5 F:\online\ahmed\pic controller\keypad_lib.c
 [v _keypad `(uc  1 e 1 0 ]
 {
 "41
 } 0
-"3 F:\online\ahmed\pic controller\lcd_lib.c
+"13 F:\online\ahmed\pic controller\lcd_lib.c
+[v _lcd_init `(v  1 e 0 0 ]
+{
+"17
+} 0
+"3
 [v _data `(v  1 e 0 0 ]
 {
 "4
@@ -59,11 +75,6 @@
 [v _a `uc  1 p 1 0 ]
 "11
 } 2
-"13
-[v _lcd_init `(v  1 e 0 0 ]
-{
-"17
-} 0
 "20
 [v _cmd `(v  1 e 0 0 ]
 {

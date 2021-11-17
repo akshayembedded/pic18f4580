@@ -122,6 +122,11 @@ GLOBAL	__Ldata0,__Lidata
 	call	copy_data
 
 	PSECT	end_init
+	GLOBAL	__Lsmallconst
+	movlw	low highword(__Lsmallconst)
+	movwf	tblptru
+	movlw	high(__Lsmallconst)
+	movwf	tblptrh
 	goto	_main		;go do the main stuff
 ; Copy the ROM data image to destination in RAM
 copy_data:
