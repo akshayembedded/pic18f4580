@@ -1,0 +1,977 @@
+
+
+HI-TECH Software LITE Macro Assembler (PIC18) V9.63PL3 build 4692 
+                                                       Wed Nov 17 08:20:33 2021
+
+HI-TECH Software Omniscient Code Generator build 4692
+     1  000000                     opt subtitle "HI-TECH Software Omniscient Code G
+                                 enerator build 4692"
+     2                           
+     3                           	processor	18F4580
+     4  000000                     porta	equ	0F80h
+     5  000000                     portb	equ	0F81h
+     6  000000                     portc	equ	0F82h
+     7  000000                     portd	equ	0F83h
+     8  000000                     porte	equ	0F84h
+     9  000000                     lata	equ	0F89h
+    10  000000                     latb	equ	0F8Ah
+    11  000000                     latc	equ	0F8Bh
+    12  000000                     latd	equ	0F8Ch
+    13  000000                     late	equ	0F8Dh
+    14  000000                     trisa	equ	0F92h
+    15  000000                     trisb	equ	0F93h
+    16  000000                     trisc	equ	0F94h
+    17  000000                     trisd	equ	0F95h
+    18  000000                     trise	equ	0F96h
+    19  000000                     pie1	equ	0F9Dh
+    20  000000                     pir1	equ	0F9Eh
+    21  000000                     ipr1	equ	0F9Fh
+    22  000000                     pie2	equ	0FA0h
+    23  000000                     pir2	equ	0FA1h
+    24  000000                     ipr2	equ	0FA2h
+    25  000000                     t3con	equ	0FB1h
+    26  000000                     tmr3l	equ	0FB2h
+    27  000000                     tmr3h	equ	0FB3h
+    28  000000                     ccp1con	equ	0FBDh
+    29  000000                     ccpr1l	equ	0FBEh
+    30  000000                     ccpr1h	equ	0FBFh
+    31  000000                     adcon1	equ	0FC1h
+    32  000000                     adcon0	equ	0FC2h
+    33  000000                     adresl	equ	0FC3h
+    34  000000                     adresh	equ	0FC4h
+    35  000000                     sspcon2	equ	0FC5h
+    36  000000                     sspcon1	equ	0FC6h
+    37  000000                     sspstat	equ	0FC7h
+    38  000000                     sspadd	equ	0FC8h
+    39  000000                     sspbuf	equ	0FC9h
+    40  000000                     t2con	equ	0FCAh
+    41  000000                     pr2	equ	0FCBh
+    42  000000                     tmr2	equ	0FCCh
+    43  000000                     t1con	equ	0FCDh
+    44  000000                     tmr1l	equ	0FCEh
+    45  000000                     tmr1h	equ	0FCFh
+    46  000000                     rcon	equ	0FD0h
+    47  000000                     wdtcon	equ	0FD1h
+    48  000000                     lvdcon	equ	0FD2h
+    49  000000                     osccon	equ	0FD3h
+    50  000000                     t0con	equ	0FD5h
+    51  000000                     tmr0l	equ	0FD6h
+    52  000000                     tmr0h	equ	0FD7h
+    53  000000                     status	equ	0FD8h
+    54  000000                     fsr2	equ	0FD9h
+    55  000000                     fsr2l	equ	0FD9h
+    56  000000                     fsr2h	equ	0FDAh
+    57  000000                     plusw2	equ	0FDBh
+    58  000000                     preinc2	equ	0FDCh
+    59  000000                     postdec2	equ	0FDDh
+    60  000000                     postinc2	equ	0FDEh
+    61  000000                     indf2	equ	0FDFh
+    62  000000                     bsr	equ	0FE0h
+    63  000000                     fsr1	equ	0FE1h
+    64  000000                     fsr1l	equ	0FE1h
+    65  000000                     fsr1h	equ	0FE2h
+    66  000000                     plusw1	equ	0FE3h
+    67  000000                     preinc1	equ	0FE4h
+    68  000000                     postdec1	equ	0FE5h
+    69  000000                     postinc1	equ	0FE6h
+    70  000000                     indf1	equ	0FE7h
+    71  000000                     wreg	equ	0FE8h
+    72  000000                     fsr0	equ	0FE9h
+    73  000000                     fsr0l	equ	0FE9h
+    74  000000                     fsr0h	equ	0FEAh
+    75  000000                     plusw0	equ	0FEBh
+    76  000000                     preinc0	equ	0FECh
+    77  000000                     postdec0	equ	0FEDh
+    78  000000                     postinc0	equ	0FEEh
+    79  000000                     indf0	equ	0FEFh
+    80  000000                     intcon3	equ	0FF0h
+    81  000000                     intcon2	equ	0FF1h
+    82  000000                     intcon	equ	0FF2h
+    83  000000                     prod	equ	0FF3h
+    84  000000                     prodl	equ	0FF3h
+    85  000000                     prodh	equ	0FF4h
+    86  000000                     tablat	equ	0FF5h
+    87  000000                     tblptr	equ	0FF6h
+    88  000000                     tblptrl	equ	0FF6h
+    89  000000                     tblptrh	equ	0FF7h
+    90  000000                     tblptru	equ	0FF8h
+    91  000000                     pcl	equ	0FF9h
+    92  000000                     pclat	equ	0FFAh
+    93  000000                     pclath	equ	0FFAh
+    94  000000                     pclatu	equ	0FFBh
+    95  000000                     stkptr	equ	0FFCh
+    96  000000                     tosl	equ	0FFDh
+    97  000000                     tosh	equ	0FFEh
+    98  000000                     tosu	equ	0FFFh
+    99                           	global	__ramtop
+   100                           	global	__accesstop
+   101                           	GLOBAL	__activetblptr
+   102  000000                     __activetblptr	EQU	0
+   103                           	GLOBAL	__smallconst,__Lsmallconst
+   104  000000                     __smallconst	EQU	__Lsmallconst
+   105                           	GLOBAL	__mediumconst,__Lmediumconst
+   106  000000                     __mediumconst	EQU	__Lmediumconst
+   107                           	GLOBAL	__Ldata
+   108  000000                     __Ldata	EQU	0
+   109+ 000000                     data@i	equ	??_data+0
+   110                           	global	data@i
+   111  000000                     data@a	equ	?_data+0
+   112                           	global	data@a
+   113  000000                     cmd@i	equ	??_cmd+0
+   114+                          	global	cmd@i
+   115+ 000000                     cmd@a	equ	?_cmd+0
+   116                           	global	cmd@a
+   117                           ;Data sizes: Strings 0, constant 0, data 0, bss 
+                                 0, persistent 0 stack 7
+   118                           	global	_main
+   119                           	global	??_main
+   120                           	global	?_main
+   121                                   psect   text0,class=CODE,space=0,reloc=2
+   122                           
+   123                           	opt lm
+   124                           	file	"F:\online\ahmed\pic controller\keypad_upd
+                                 ate1.c"
+   125                           	line	4
+   126  000000                     	__size_of_main	equ	__end_of_main-_main
+   127                           ;keypad_update1.c: 3: void main()
+   128                           ;keypad_update1.c: 4: {
+   129                           	
+   130  007D92                     _main:		; BSR set to: ?
+   131+                          
+   132+                          	opt stack 31
+   133+                          	line	6
+   134+ 007D92  0100               	movlb	0	; () banked
+   135  007D94  6FF9               	movwf	(??_main+0+0)&0ffh
+   136  007D96  0E0F               	movlw	low(0Fh)
+   137+ 007D98  6EC1               	movwf	((c:4033)),c
+   138  007D9A  0100               	movlb	0	; () banked
+   139  007D9C  51F9               	movf	(??_main+0+0)&0ffh,w
+   140+                          	line	7
+   141+                          ;keypad_update1.c: 7: TRISB=0x0f;
+   142+ 007D9E  0E0F               	movlw	low(0Fh)
+   143  007DA0  6E93               	movwf	((c:3987)),c	;volatile
+   144                           	line	8
+   145                           ;keypad_update1.c: 8: TRISC=0x00;
+   146  007DA2  0E00               	movlw	low(0)
+   147+ 007DA4  6E94               	movwf	((c:3988)),c	;volatile
+   148                           	line	9
+   149                           ;keypad_update1.c: 9: TRISD=0x00;
+   150  007DA6  0E00               	movlw	low(0)
+   151  007DA8  6E95               	movwf	((c:3989)),c	;volatile
+   152+                          	line	10
+   153+                          ;keypad_update1.c: 10: LATC=0x00;
+   154+ 007DAA  0E00               	movlw	low(0)
+   155  007DAC  6E8B               	movwf	((c:3979)),c	;volatile
+   156                           	line	11
+   157                           ;keypad_update1.c: 11: lcd_init();
+   158  007DAE  EC45  F03E         	call	_lcd_init	;wreg free
+   159+                          	line	12
+   160+                          ;keypad_update1.c: 12: while(1)
+   161+                          	
+   162+ 007DB2                     l1381:		; BSR set to: ?
+   163                           
+   164                           	line	14
+   165                           ;keypad_update1.c: 13: {
+   166                           ;keypad_update1.c: 14: LATB=0xe0;
+   167  007DB2  0EE0               	movlw	low(0E0h)
+   168  007DB4  6E8A               	movwf	((c:3978)),c	;volatile
+   169+                          	line	15
+   170+                          ;keypad_update1.c: 15: switch(PORTB&0x0f)
+   171+ 007DB6  D02C               	goto	l1384
+   172                           	line	17
+   173                           ;keypad_update1.c: 16: {
+   174                           ;keypad_update1.c: 17: case 0x0e: data('a'); bre
+                                 ak;
+   175                           	
+   176  007DB8                     l1385:		; BSR set to: ?
+   177                           
+   178  007DB8  0100               	movlb	0	; () banked
+   179+ 007DBA  6FF9               	movwf	(??_main+0+0)&0ffh
+   180  007DBC  0E61               	movlw	low(061h)
+   181  007DBE  0100               	movlb	0	; () banked
+   182+ 007DC0  0100               	movlb	0	; () banked
+   183  007DC2  6FFC               	movwf	((?_data))&0ffh
+   184  007DC4  0100               	movlb	0	; () banked
+   185+ 007DC6  51F9               	movf	(??_main+0+0)&0ffh,w
+   186  007DC8  EC8E  F03E         	call	_data	;wreg free
+   187  007DCC  D03B               	goto	l1383
+   188+                          	line	18
+   189+                          ;keypad_update1.c: 18: case 0x0b: data('b'); bre
+      +                          ak;
+   190+                          	
+   191+ 007DCE                     l1386:		; BSR set to: ?
+   192                           
+   193  007DCE  0100               	movlb	0	; () banked
+   194  007DD0  6FF9               	movwf	(??_main+0+0)&0ffh
+   195+ 007DD2  0E62               	movlw	low(062h)
+   196  007DD4  0100               	movlb	0	; () banked
+   197  007DD6  0100               	movlb	0	; () banked
+   198+ 007DD8  6FFC               	movwf	((?_data))&0ffh
+   199  007DDA  0100               	movlb	0	; () banked
+   200  007DDC  51F9               	movf	(??_main+0+0)&0ffh,w
+   201+ 007DDE  EC8E  F03E         	call	_data	;wreg free
+   202  007DE2  D030               	goto	l1383
+   203                           	line	19
+   204                           ;keypad_update1.c: 19: case 0x0D: data('c'); bre
+                                 ak;
+   205                           	
+   206  007DE4                     l1387:		; BSR set to: ?
+   207+                          
+   208+ 007DE4  0100               	movlb	0	; () banked
+   209  007DE6  6FF9               	movwf	(??_main+0+0)&0ffh
+   210  007DE8  0E63               	movlw	low(063h)
+   211+ 007DEA  0100               	movlb	0	; () banked
+   212  007DEC  0100               	movlb	0	; () banked
+   213  007DEE  6FFC               	movwf	((?_data))&0ffh
+   214+ 007DF0  0100               	movlb	0	; () banked
+   215  007DF2  51F9               	movf	(??_main+0+0)&0ffh,w
+   216  007DF4  EC8E  F03E         	call	_data	;wreg free
+   217+ 007DF8  D025               	goto	l1383
+   218                           	line	20
+   219                           ;keypad_update1.c: 20: case 0x07: data('d'); bre
+                                 ak;
+   220                           	
+   221  007DFA                     l1388:		; BSR set to: ?
+   222                           
+   223  007DFA  0100               	movlb	0	; () banked
+   224+ 007DFC  6FF9               	movwf	(??_main+0+0)&0ffh
+   225  007DFE  0E64               	movlw	low(064h)
+   226  007E00  0100               	movlb	0	; () banked
+   227+ 007E02  0100               	movlb	0	; () banked
+   228  007E04  6FFC               	movwf	((?_data))&0ffh
+   229  007E06  0100               	movlb	0	; () banked
+   230+ 007E08  51F9               	movf	(??_main+0+0)&0ffh,w
+   231  007E0A  EC8E  F03E         	call	_data	;wreg free
+   232  007E0E  D01A               	goto	l1383
+   233+                          	line	15
+   234+                          	
+   235+ 007E10                     l1384:		; BSR set to: ?
+   236                           
+   237  007E10  CF81 F0F9          	movff	(c:3969),??_main+0+0	;volatile
+   238  007E14  0E0F               	movlw	0Fh
+   239+ 007E16  0100               	movlb	0	; () banked
+   240  007E18  17F9               	andwf	(??_main+0+0)&0ffh
+   241  007E1A  C0F9  F0FA         	movff	??_main+0+0,??_main+1+0
+   242+ 007E1E  0100               	movlb	0	; () banked
+   243  007E20  6BFB               	clrf	(??_main+1+0+1)&0ffh
+   244  007E22  D00B               	goto	l30033
+   245+ 007E24                     l30034:
+   246  007E24  0100               	movlb	0	; () banked
+   247  007E26  51FA               	movf	(??_main+1+0)&0ffh,w
+   248+ 007E28  0A07               	xorlw	7 ^ 0
+   249  007E2A  E0E7               	bz	l1388
+   250  007E2C  0A0C               	xorlw	11 ^ 7
+   251+ 007E2E  E0CF               	bz	l1386
+   252  007E30  0A06               	xorlw	13 ^ 11
+   253  007E32  E0D8               	bz	l1387
+   254+ 007E34  0A03               	xorlw	14 ^ 13
+   255  007E36  E0C0               	bz	l1385
+   256  007E38  D005               	goto	l1383
+   257+                          
+   258+ 007E3A                     l30033:
+   259  007E3A  0100               	movlb	0	; () banked
+   260  007E3C  51FB               	movf	(??_main+1+1)&0ffh,w
+   261+ 007E3E  0A00               	xorlw	0 ^ 0
+   262  007E40  E0F1               	bz	l30034
+   263  007E42  D000               	goto	l1383
+   264+                          
+   265+                          	line	21
+   266+                          	
+   267+ 007E44                     l1383:		; BSR set to: ?
+   268                           
+   269                           	line	22
+   270                           ;keypad_update1.c: 22: LATB=0xD0;
+   271  007E44  0ED0               	movlw	low(0D0h)
+   272  007E46  6E8A               	movwf	((c:3978)),c	;volatile
+   273+                          	line	23
+   274+                          ;keypad_update1.c: 23: switch(PORTB&0x0f)
+   275+ 007E48  D02C               	goto	l1390
+   276                           	line	25
+   277                           ;keypad_update1.c: 24: {
+   278                           ;keypad_update1.c: 25: case 0x0e: data('e'); bre
+                                 ak;
+   279                           	
+   280  007E4A                     l1391:		; BSR set to: ?
+   281                           
+   282  007E4A  0100               	movlb	0	; () banked
+   283+ 007E4C  6FF9               	movwf	(??_main+0+0)&0ffh
+   284  007E4E  0E65               	movlw	low(065h)
+   285  007E50  0100               	movlb	0	; () banked
+   286+ 007E52  0100               	movlb	0	; () banked
+   287  007E54  6FFC               	movwf	((?_data))&0ffh
+   288  007E56  0100               	movlb	0	; () banked
+   289+ 007E58  51F9               	movf	(??_main+0+0)&0ffh,w
+   290  007E5A  EC8E  F03E         	call	_data	;wreg free
+   291  007E5E  D03B               	goto	l1389
+   292+                          	line	26
+   293+                          ;keypad_update1.c: 26: case 0x0b: data('f'); bre
+      +                          ak;
+   294+                          	
+   295+ 007E60                     l1392:		; BSR set to: ?
+   296                           
+   297  007E60  0100               	movlb	0	; () banked
+   298  007E62  6FF9               	movwf	(??_main+0+0)&0ffh
+   299+ 007E64  0E66               	movlw	low(066h)
+   300  007E66  0100               	movlb	0	; () banked
+   301  007E68  0100               	movlb	0	; () banked
+   302+ 007E6A  6FFC               	movwf	((?_data))&0ffh
+   303  007E6C  0100               	movlb	0	; () banked
+   304  007E6E  51F9               	movf	(??_main+0+0)&0ffh,w
+   305+ 007E70  EC8E  F03E         	call	_data	;wreg free
+   306  007E74  D030               	goto	l1389
+   307                           	line	27
+   308                           ;keypad_update1.c: 27: case 0x0D: data('g'); bre
+                                 ak;
+   309                           	
+   310  007E76                     l1393:		; BSR set to: ?
+   311+                          
+   312+ 007E76  0100               	movlb	0	; () banked
+   313  007E78  6FF9               	movwf	(??_main+0+0)&0ffh
+   314  007E7A  0E67               	movlw	low(067h)
+   315+ 007E7C  0100               	movlb	0	; () banked
+   316  007E7E  0100               	movlb	0	; () banked
+   317  007E80  6FFC               	movwf	((?_data))&0ffh
+   318+ 007E82  0100               	movlb	0	; () banked
+   319  007E84  51F9               	movf	(??_main+0+0)&0ffh,w
+   320  007E86  EC8E  F03E         	call	_data	;wreg free
+   321+ 007E8A  D025               	goto	l1389
+   322                           	line	28
+   323                           ;keypad_update1.c: 28: case 0x07: data('h'); bre
+                                 ak;
+   324                           	
+   325  007E8C                     l1394:		; BSR set to: ?
+   326                           
+   327  007E8C  0100               	movlb	0	; () banked
+   328+ 007E8E  6FF9               	movwf	(??_main+0+0)&0ffh
+   329  007E90  0E68               	movlw	low(068h)
+   330  007E92  0100               	movlb	0	; () banked
+   331+ 007E94  0100               	movlb	0	; () banked
+   332  007E96  6FFC               	movwf	((?_data))&0ffh
+   333  007E98  0100               	movlb	0	; () banked
+   334+ 007E9A  51F9               	movf	(??_main+0+0)&0ffh,w
+   335  007E9C  EC8E  F03E         	call	_data	;wreg free
+   336  007EA0  D01A               	goto	l1389
+   337+                          	line	23
+   338+                          	
+   339+ 007EA2                     l1390:		; BSR set to: ?
+   340                           
+   341  007EA2  CF81 F0F9          	movff	(c:3969),??_main+0+0	;volatile
+   342  007EA6  0E0F               	movlw	0Fh
+   343+ 007EA8  0100               	movlb	0	; () banked
+   344  007EAA  17F9               	andwf	(??_main+0+0)&0ffh
+   345  007EAC  C0F9  F0FA         	movff	??_main+0+0,??_main+1+0
+   346+ 007EB0  0100               	movlb	0	; () banked
+   347  007EB2  6BFB               	clrf	(??_main+1+0+1)&0ffh
+   348  007EB4  D00B               	goto	l30035
+   349+ 007EB6                     l30036:
+   350  007EB6  0100               	movlb	0	; () banked
+   351  007EB8  51FA               	movf	(??_main+1+0)&0ffh,w
+   352+ 007EBA  0A07               	xorlw	7 ^ 0
+   353  007EBC  E0E7               	bz	l1394
+   354  007EBE  0A0C               	xorlw	11 ^ 7
+   355+ 007EC0  E0CF               	bz	l1392
+   356  007EC2  0A06               	xorlw	13 ^ 11
+   357  007EC4  E0D8               	bz	l1393
+   358+ 007EC6  0A03               	xorlw	14 ^ 13
+   359  007EC8  E0C0               	bz	l1391
+   360  007ECA  D005               	goto	l1389
+   361+                          
+   362+ 007ECC                     l30035:
+   363  007ECC  0100               	movlb	0	; () banked
+   364  007ECE  51FB               	movf	(??_main+1+1)&0ffh,w
+   365+ 007ED0  0A00               	xorlw	0 ^ 0
+   366  007ED2  E0F1               	bz	l30036
+   367  007ED4  D000               	goto	l1389
+   368+                          
+   369+                          	line	29
+   370+                          	
+   371+ 007ED6                     l1389:		; BSR set to: ?
+   372                           
+   373                           	line	30
+   374                           ;keypad_update1.c: 30: LATB=0xB0;
+   375  007ED6  0EB0               	movlw	low(0B0h)
+   376  007ED8  6E8A               	movwf	((c:3978)),c	;volatile
+   377+                          	line	31
+   378+                          ;keypad_update1.c: 31: switch(PORTB&0x0f)
+   379+ 007EDA  D02C               	goto	l1396
+   380                           	line	33
+   381                           ;keypad_update1.c: 32: {
+   382                           ;keypad_update1.c: 33: case 0x0e: data('i'); bre
+                                 ak;
+   383                           	
+   384  007EDC                     l1397:		; BSR set to: ?
+   385                           
+   386  007EDC  0100               	movlb	0	; () banked
+   387+ 007EDE  6FF9               	movwf	(??_main+0+0)&0ffh
+   388  007EE0  0E69               	movlw	low(069h)
+   389  007EE2  0100               	movlb	0	; () banked
+   390+ 007EE4  0100               	movlb	0	; () banked
+   391  007EE6  6FFC               	movwf	((?_data))&0ffh
+   392  007EE8  0100               	movlb	0	; () banked
+   393+ 007EEA  51F9               	movf	(??_main+0+0)&0ffh,w
+   394  007EEC  EC8E  F03E         	call	_data	;wreg free
+   395  007EF0  D03B               	goto	l1395
+   396+                          	line	34
+   397+                          ;keypad_update1.c: 34: case 0x0b: data('j'); bre
+      +                          ak;
+   398+                          	
+   399+ 007EF2                     l1398:		; BSR set to: ?
+   400                           
+   401  007EF2  0100               	movlb	0	; () banked
+   402  007EF4  6FF9               	movwf	(??_main+0+0)&0ffh
+   403+ 007EF6  0E6A               	movlw	low(06Ah)
+   404  007EF8  0100               	movlb	0	; () banked
+   405  007EFA  0100               	movlb	0	; () banked
+   406+ 007EFC  6FFC               	movwf	((?_data))&0ffh
+   407  007EFE  0100               	movlb	0	; () banked
+   408  007F00  51F9               	movf	(??_main+0+0)&0ffh,w
+   409+ 007F02  EC8E  F03E         	call	_data	;wreg free
+   410  007F06  D030               	goto	l1395
+   411                           	line	35
+   412                           ;keypad_update1.c: 35: case 0x0D: data('k'); bre
+                                 ak;
+   413                           	
+   414  007F08                     l1399:		; BSR set to: ?
+   415+                          
+   416+ 007F08  0100               	movlb	0	; () banked
+   417  007F0A  6FF9               	movwf	(??_main+0+0)&0ffh
+   418  007F0C  0E6B               	movlw	low(06Bh)
+   419  007F0E  0100               	movlb	0	; () banked
+   420  007F10  0100               	movlb	0	; () banked
+   421  007F12  6FFC               	movwf	((?_data))&0ffh
+   422  007F14  0100               	movlb	0	; () banked
+   423  007F16  51F9               	movf	(??_main+0+0)&0ffh,w
+   424  007F18  EC8E  F03E         	call	_data	;wreg free
+   425  007F1C  D025               	goto	l1395
+   426                           	line	36
+   427                           ;keypad_update1.c: 36: case 0x07: data('l'); bre
+                                 ak;
+   428                           	
+   429  007F1E                     l1400:		; BSR set to: ?
+   430                           
+   431  007F1E  0100               	movlb	0	; () banked
+   432  007F20  6FF9               	movwf	(??_main+0+0)&0ffh
+   433  007F22  0E6C               	movlw	low(06Ch)
+   434  007F24  0100               	movlb	0	; () banked
+   435  007F26  0100               	movlb	0	; () banked
+   436  007F28  6FFC               	movwf	((?_data))&0ffh
+   437  007F2A  0100               	movlb	0	; () banked
+   438  007F2C  51F9               	movf	(??_main+0+0)&0ffh,w
+   439  007F2E  EC8E  F03E         	call	_data	;wreg free
+   440  007F32  D01A               	goto	l1395
+   441                           	line	31
+   442                           	
+   443  007F34                     l1396:		; BSR set to: ?
+   444                           
+   445  007F34  CF81 F0F9          	movff	(c:3969),??_main+0+0	;volatile
+   446  007F38  0E0F               	movlw	0Fh
+   447  007F3A  0100               	movlb	0	; () banked
+   448  007F3C  17F9               	andwf	(??_main+0+0)&0ffh
+   449  007F3E  C0F9  F0FA         	movff	??_main+0+0,??_main+1+0
+   450  007F42  0100               	movlb	0	; () banked
+   451  007F44  6BFB               	clrf	(??_main+1+0+1)&0ffh
+   452  007F46  D00B               	goto	l30037
+   453  007F48                     l30038:
+   454  007F48  0100               	movlb	0	; () banked
+   455  007F4A  51FA               	movf	(??_main+1+0)&0ffh,w
+   456  007F4C  0A07               	xorlw	7 ^ 0
+   457  007F4E  E0E7               	bz	l1400
+   458  007F50  0A0C               	xorlw	11 ^ 7
+   459  007F52  E0CF               	bz	l1398
+   460  007F54  0A06               	xorlw	13 ^ 11
+   461  007F56  E0D8               	bz	l1399
+   462  007F58  0A03               	xorlw	14 ^ 13
+   463  007F5A  E0C0               	bz	l1397
+   464  007F5C  D005               	goto	l1395
+   465                           
+   466  007F5E                     l30037:
+   467  007F5E  0100               	movlb	0	; () banked
+   468  007F60  51FB               	movf	(??_main+1+1)&0ffh,w
+   469  007F62  0A00               	xorlw	0 ^ 0
+   470  007F64  E0F1               	bz	l30038
+   471  007F66  D000               	goto	l1395
+   472                           
+   473                           	line	37
+   474                           	
+   475  007F68                     l1395:		; BSR set to: ?
+   476                           
+   477                           	line	38
+   478                           ;keypad_update1.c: 38: LATB=0x70;
+   479  007F68  0E70               	movlw	low(070h)
+   480  007F6A  6E8A               	movwf	((c:3978)),c	;volatile
+   481                           	line	39
+   482                           ;keypad_update1.c: 39: switch(PORTB&0x0f)
+   483  007F6C  D02C               	goto	l1402
+   484                           	line	41
+   485                           ;keypad_update1.c: 40: {
+   486                           ;keypad_update1.c: 41: case 0x0e: data('m'); bre
+                                 ak;
+   487                           	
+   488  007F6E                     l1403:		; BSR set to: ?
+   489                           
+   490  007F6E  0100               	movlb	0	; () banked
+   491  007F70  6FF9               	movwf	(??_main+0+0)&0ffh
+   492  007F72  0E6D               	movlw	low(06Dh)
+   493  007F74  0100               	movlb	0	; () banked
+   494  007F76  0100               	movlb	0	; () banked
+   495  007F78  6FFC               	movwf	((?_data))&0ffh
+   496  007F7A  0100               	movlb	0	; () banked
+   497  007F7C  51F9               	movf	(??_main+0+0)&0ffh,w
+   498  007F7E  EC8E  F03E         	call	_data	;wreg free
+   499  007F82  D03B               	goto	l1380
+   500                           	line	42
+   501                           ;keypad_update1.c: 42: case 0x0b: data('n'); bre
+                                 ak;
+   502                           	
+   503  007F84                     l1404:		; BSR set to: ?
+   504                           
+   505  007F84  0100               	movlb	0	; () banked
+   506  007F86  6FF9               	movwf	(??_main+0+0)&0ffh
+   507  007F88  0E6E               	movlw	low(06Eh)
+   508  007F8A  0100               	movlb	0	; () banked
+   509  007F8C  0100               	movlb	0	; () banked
+   510  007F8E  6FFC               	movwf	((?_data))&0ffh
+   511  007F90  0100               	movlb	0	; () banked
+   512  007F92  51F9               	movf	(??_main+0+0)&0ffh,w
+   513  007F94  EC8E  F03E         	call	_data	;wreg free
+   514  007F98  D030               	goto	l1380
+   515                           	line	43
+   516                           ;keypad_update1.c: 43: case 0x0D: data('o'); bre
+                                 ak;
+   517                           	
+   518  007F9A                     l1405:		; BSR set to: ?
+   519                           
+   520  007F9A  0100               	movlb	0	; () banked
+   521  007F9C  6FF9               	movwf	(??_main+0+0)&0ffh
+   522  007F9E  0E6F               	movlw	low(06Fh)
+   523  007FA0  0100               	movlb	0	; () banked
+   524  007FA2  0100               	movlb	0	; () banked
+   525  007FA4  6FFC               	movwf	((?_data))&0ffh
+   526  007FA6  0100               	movlb	0	; () banked
+   527  007FA8  51F9               	movf	(??_main+0+0)&0ffh,w
+   528  007FAA  EC8E  F03E         	call	_data	;wreg free
+   529  007FAE  D025               	goto	l1380
+   530                           	line	44
+   531                           ;keypad_update1.c: 44: case 0x07: data('p'); bre
+                                 ak;
+   532                           	
+   533  007FB0                     l1406:		; BSR set to: ?
+   534                           
+   535  007FB0  0100               	movlb	0	; () banked
+   536  007FB2  6FF9               	movwf	(??_main+0+0)&0ffh
+   537  007FB4  0E70               	movlw	low(070h)
+   538  007FB6  0100               	movlb	0	; () banked
+   539  007FB8  0100               	movlb	0	; () banked
+   540  007FBA  6FFC               	movwf	((?_data))&0ffh
+   541  007FBC  0100               	movlb	0	; () banked
+   542  007FBE  51F9               	movf	(??_main+0+0)&0ffh,w
+   543  007FC0  EC8E  F03E         	call	_data	;wreg free
+   544  007FC4  D01A               	goto	l1380
+   545                           	line	39
+   546                           	
+   547  007FC6                     l1402:		; BSR set to: ?
+   548                           
+   549  007FC6  CF81 F0F9          	movff	(c:3969),??_main+0+0	;volatile
+   550  007FCA  0E0F               	movlw	0Fh
+   551  007FCC  0100               	movlb	0	; () banked
+   552  007FCE  17F9               	andwf	(??_main+0+0)&0ffh
+   553  007FD0  C0F9  F0FA         	movff	??_main+0+0,??_main+1+0
+   554  007FD4  0100               	movlb	0	; () banked
+   555  007FD6  6BFB               	clrf	(??_main+1+0+1)&0ffh
+   556  007FD8  D00B               	goto	l30039
+   557  007FDA                     l30040:
+   558  007FDA  0100               	movlb	0	; () banked
+   559  007FDC  51FA               	movf	(??_main+1+0)&0ffh,w
+   560  007FDE  0A07               	xorlw	7 ^ 0
+   561  007FE0  E0E7               	bz	l1406
+   562  007FE2  0A0C               	xorlw	11 ^ 7
+   563  007FE4  E0CF               	bz	l1404
+   564  007FE6  0A06               	xorlw	13 ^ 11
+   565  007FE8  E0D8               	bz	l1405
+   566  007FEA  0A03               	xorlw	14 ^ 13
+   567  007FEC  E0C0               	bz	l1403
+   568  007FEE  D005               	goto	l1380
+   569                           
+   570  007FF0                     l30039:
+   571  007FF0  0100               	movlb	0	; () banked
+   572  007FF2  51FB               	movf	(??_main+1+1)&0ffh,w
+   573  007FF4  0A00               	xorlw	0 ^ 0
+   574  007FF6  E0F1               	bz	l30040
+   575  007FF8  D000               	goto	l1380
+   576                           
+   577                           	line	46
+   578                           	
+   579  007FFA                     l1380:		; BSR set to: ?
+   580                           
+   581                           	line	12
+   582  007FFA  D6DB               	goto	l1381
+   583                           	global	start
+   584  007FFC  EF00  F000         	goto	start
+   585                           	opt stack 0
+   586                           GLOBAL __end_of_main
+   587  008000                     	__end_of_main:
+   588                           	FNSIZE	_main,3,0
+   589                           ; =============== function _main ends ==========
+                                 ==
+   590                           
+   591                                   psect   text1,class=CODE,space=0,reloc=2
+   592                           	line	47
+   593                           
+   594                           	opt lm
+   595                           	signat	_main,88
+   596                           	global	_data
+   597                           	global	??_data
+   598                           	global	?_data
+   599                           	file	"F:\online\ahmed\pic controller\lcd_lib.c"
+   600                           	line	3
+   601  000000                     	__size_of_data	equ	__end_of_data-_data
+   602                           ;lcd_lib.c: 2: void data(char a)
+   603                           ;lcd_lib.c: 3: {
+   604                           	
+   605  007D1C                     _data:		; BSR set to: ?
+   606                           
+   607                           	opt stack 30
+   608                           	line	5
+   609                           ;lcd_lib.c: 4: int i;
+   610                           ;lcd_lib.c: 5: RD0=1;
+   611  007D1C  8083               	bsf	c:(31768/8),(31768)&7	;volatile
+   612                           	line	6
+   613                           ;lcd_lib.c: 6: LATC=a;
+   614  007D1E  C0FC  FF8B         	movff	(data@a),(c:3979)	;volatile
+   615                           	line	7
+   616                           ;lcd_lib.c: 7: RD1=1;
+   617  007D22  8283               	bsf	c:(31769/8),(31769)&7	;volatile
+   618                           	line	8
+   619                           ;lcd_lib.c: 8: for(i=0;i<=1000;i++);
+   620  007D24  0E00               	movlw	low(0)
+   621  007D26  0100               	movlb	0	; () banked
+   622  007D28  0100               	movlb	0	; () banked
+   623  007D2A  6FFD               	movwf	((data@i))&0ffh
+   624  007D2C  0E00               	movlw	high(0)
+   625  007D2E  0100               	movlb	0	; () banked
+   626  007D30  6FFE               	movwf	((data@i+1))&0ffh
+   627  007D32  0100               	movlb	0	; () banked
+   628  007D34  0100               	movlb	0	; () banked
+   629  007D36  51FE               	movf	((data@i+1))&0ffh,w
+   630  007D38  0A80               	xorlw	80h
+   631  007D3A  0F7D               	addlw	-((03h)^80h)
+   632  007D3C  0EE9               	movlw	0E9h
+   633  007D3E  B4D8               	btfsc	status,2
+   634  007D40  5DFD               	subwf	((data@i))&0ffh,w
+   635  007D42  A0D8               	btfss	status,0
+   636  007D44  D001               	goto	u91
+   637  007D46  D001               	goto	u90
+   638  007D48                     u91:
+   639  007D48  D001               	goto	l675
+   640  007D4A                     u90:
+   641  007D4A  D010               	goto	l676
+   642                           	
+   643  007D4C                     l675:		; BSR set to: ?
+   644                           
+   645  007D4C  0100               	movlb	0	; () banked
+   646  007D4E  0100               	movlb	0	; () banked
+   647  007D50  4BFD               	infsnz	((data@i))&0ffh
+   648  007D52  2BFE               	incf	((data@i+1))&0ffh
+   649  007D54  0100               	movlb	0	; () banked
+   650  007D56  0100               	movlb	0	; () banked
+   651  007D58  51FE               	movf	((data@i+1))&0ffh,w
+   652  007D5A  0A80               	xorlw	80h
+   653  007D5C  0F7D               	addlw	-((03h)^80h)
+   654  007D5E  0EE9               	movlw	0E9h
+   655  007D60  B4D8               	btfsc	status,2
+   656  007D62  5DFD               	subwf	((data@i))&0ffh,w
+   657  007D64  A0D8               	btfss	status,0
+   658  007D66  D001               	goto	u101
+   659  007D68  D001               	goto	u100
+   660  007D6A                     u101:
+   661  007D6A  D7F0               	goto	l675
+   662  007D6C                     u100:
+   663                           	
+   664  007D6C                     l676:		; BSR set to: ?
+   665                           
+   666                           	line	9
+   667                           ;lcd_lib.c: 9: RD1=0;
+   668  007D6C  9283               	bcf	c:(31769/8),(31769)&7	;volatile
+   669                           	line	10
+   670                           ;lcd_lib.c: 10: while(RB0==0||RB1==0||RB2==0||RB
+                                 3==0);
+   671  007D6E  D000               	goto	l678
+   672                           	
+   673  007D70                     l678:		; BSR set to: ?
+   674                           
+   675  007D70  A081               	btfss	c:(31752/8),(31752)&7	;volatile
+   676  007D72  D001               	goto	u111
+   677  007D74  D001               	goto	u110
+   678  007D76                     u111:
+   679  007D76  D7FC               	goto	l678
+   680  007D78                     u110:
+   681  007D78  A281               	btfss	c:(31753/8),(31753)&7	;volatile
+   682  007D7A  D001               	goto	u121
+   683  007D7C  D001               	goto	u120
+   684  007D7E                     u121:
+   685  007D7E  D7F8               	goto	l678
+   686  007D80                     u120:
+   687  007D80  A481               	btfss	c:(31754/8),(31754)&7	;volatile
+   688  007D82  D001               	goto	u131
+   689  007D84  D001               	goto	u130
+   690  007D86                     u131:
+   691  007D86  D7F4               	goto	l678
+   692  007D88                     u130:
+   693  007D88  A681               	btfss	c:(31755/8),(31755)&7	;volatile
+   694  007D8A  D001               	goto	u141
+   695  007D8C  D001               	goto	u140
+   696  007D8E                     u141:
+   697  007D8E  D7F0               	goto	l678
+   698  007D90                     u140:
+   699                           	
+   700  007D90                     l680:		; BSR set to: ?
+   701                           
+   702                           	line	11
+   703                           ;lcd_lib.c: 11: }
+   704  007D90                     l674:
+   705                           			; BSR set to: ?
+   706                           
+   707  007D90  0012               	return
+   708                           	opt stack 0
+   709                           GLOBAL __end_of_data
+   710  007D92                     	__end_of_data:
+   711                           	FNSIZE	_data,2,1
+   712                           ; =============== function _data ends ==========
+                                 ==
+   713                           
+   714                           	signat	_data,4216
+   715                           	global	_lcd_init
+   716                           	global	??_lcd_init
+   717                           	global	?_lcd_init
+   718                                   psect   text2,class=CODE,space=0,reloc=2
+   719                           
+   720                           	opt lm
+   721                           	file	"F:\online\ahmed\pic controller\lcd_lib.c"
+   722                           	line	13
+   723  000000                     	__size_of_lcd_init	equ	__end_of_lcd_init-_lcd_i
+                                 nit
+   724                           ;lcd_lib.c: 12: void lcd_init()
+   725                           ;lcd_lib.c: 13: {
+   726                           	
+   727  007C8A                     _lcd_init:		; BSR set to: ?
+   728                           
+   729                           	opt stack 30
+   730                           	line	14
+   731                           ;lcd_lib.c: 14: cmd(0x38);
+   732  007C8A  0100               	movlb	0	; () banked
+   733  007C8C  6FFC               	movwf	(??_lcd_init+0+0)&0ffh
+   734  007C8E  0E38               	movlw	low(038h)
+   735  007C90  0100               	movlb	0	; () banked
+   736  007C92  0100               	movlb	0	; () banked
+   737  007C94  6FFD               	movwf	((?_cmd))&0ffh
+   738  007C96  0100               	movlb	0	; () banked
+   739  007C98  51FC               	movf	(??_lcd_init+0+0)&0ffh,w
+   740  007C9A  EC64  F03E         	call	_cmd	;wreg free
+   741                           	line	15
+   742                           ;lcd_lib.c: 15: cmd(0x01);
+   743  007C9E  0100               	movlb	0	; () banked
+   744  007CA0  6FFC               	movwf	(??_lcd_init+0+0)&0ffh
+   745  007CA2  0E01               	movlw	low(01h)
+   746  007CA4  0100               	movlb	0	; () banked
+   747  007CA6  0100               	movlb	0	; () banked
+   748  007CA8  6FFD               	movwf	((?_cmd))&0ffh
+   749  007CAA  0100               	movlb	0	; () banked
+   750  007CAC  51FC               	movf	(??_lcd_init+0+0)&0ffh,w
+   751  007CAE  EC64  F03E         	call	_cmd	;wreg free
+   752                           	line	16
+   753                           ;lcd_lib.c: 16: cmd(0x0f);
+   754  007CB2  0100               	movlb	0	; () banked
+   755  007CB4  6FFC               	movwf	(??_lcd_init+0+0)&0ffh
+   756  007CB6  0E0F               	movlw	low(0Fh)
+   757  007CB8  0100               	movlb	0	; () banked
+   758  007CBA  0100               	movlb	0	; () banked
+   759  007CBC  6FFD               	movwf	((?_cmd))&0ffh
+   760  007CBE  0100               	movlb	0	; () banked
+   761  007CC0  51FC               	movf	(??_lcd_init+0+0)&0ffh,w
+   762  007CC2  EC64  F03E         	call	_cmd	;wreg free
+   763                           	line	17
+   764                           ;lcd_lib.c: 17: }
+   765  007CC6                     l681:
+   766                           			; BSR set to: ?
+   767                           
+   768  007CC6  0012               	return
+   769                           	opt stack 0
+   770                           GLOBAL __end_of_lcd_init
+   771  007CC8                     	__end_of_lcd_init:
+   772                           	FNSIZE	_lcd_init,1,0
+   773                           ; =============== function _lcd_init ends ======
+                                 ======
+   774                           
+   775                           	signat	_lcd_init,88
+   776                           	global	_cmd
+   777                           	global	??_cmd
+   778                           	global	?_cmd
+   779                                   psect   text3,class=CODE,space=0,reloc=2
+   780                           
+   781                           	opt lm
+   782                           	file	"F:\online\ahmed\pic controller\lcd_lib.c"
+   783                           	line	20
+   784  000000                     	__size_of_cmd	equ	__end_of_cmd-_cmd
+   785                           ;lcd_lib.c: 19: void cmd(char a)
+   786                           ;lcd_lib.c: 20: {
+   787                           	
+   788  007CC8                     _cmd:		; BSR set to: ?
+   789                           
+   790                           	opt stack 29
+   791                           	line	22
+   792  007CC8  9083               	bcf	c:(31768/8),(31768)&7	;volatile
+   793                           	line	23
+   794                           ;lcd_lib.c: 23: LATC=a;
+   795  007CCA  C0FD  FF8B         	movff	(cmd@a),(c:3979)	;volatile
+   796                           	line	24
+   797                           ;lcd_lib.c: 24: RD1=1;
+   798  007CCE  8283               	bsf	c:(31769/8),(31769)&7	;volatile
+   799                           	line	25
+   800                           ;lcd_lib.c: 25: for(i=0;i<=1000;i++);
+   801  007CD0  0E00               	movlw	low(0)
+   802  007CD2  0100               	movlb	0	; () banked
+   803  007CD4  0100               	movlb	0	; () banked
+   804  007CD6  6FFE               	movwf	((cmd@i))&0ffh
+   805  007CD8  0E00               	movlw	high(0)
+   806  007CDA  0100               	movlb	0	; () banked
+   807  007CDC  6FFF               	movwf	((cmd@i+1))&0ffh
+   808  007CDE  0100               	movlb	0	; () banked
+   809  007CE0  0100               	movlb	0	; () banked
+   810  007CE2  51FF               	movf	((cmd@i+1))&0ffh,w
+   811  007CE4  0A80               	xorlw	80h
+   812  007CE6  0F7D               	addlw	-((03h)^80h)
+   813  007CE8  0EE9               	movlw	0E9h
+   814  007CEA  B4D8               	btfsc	status,2
+   815  007CEC  5DFE               	subwf	((cmd@i))&0ffh,w
+   816  007CEE  A0D8               	btfss	status,0
+   817  007CF0  D001               	goto	u151
+   818  007CF2  D001               	goto	u150
+   819  007CF4                     u151:
+   820  007CF4  D001               	goto	l683
+   821  007CF6                     u150:
+   822  007CF6  D010               	goto	l684
+   823                           	
+   824  007CF8                     l683:		; BSR set to: ?
+   825                           
+   826  007CF8  0100               	movlb	0	; () banked
+   827  007CFA  0100               	movlb	0	; () banked
+   828  007CFC  4BFE               	infsnz	((cmd@i))&0ffh
+   829  007CFE  2BFF               	incf	((cmd@i+1))&0ffh
+   830  007D00  0100               	movlb	0	; () banked
+   831  007D02  0100               	movlb	0	; () banked
+   832  007D04  51FF               	movf	((cmd@i+1))&0ffh,w
+   833  007D06  0A80               	xorlw	80h
+   834  007D08  0F7D               	addlw	-((03h)^80h)
+   835  007D0A  0EE9               	movlw	0E9h
+   836  007D0C  B4D8               	btfsc	status,2
+   837  007D0E  5DFE               	subwf	((cmd@i))&0ffh,w
+   838  007D10  A0D8               	btfss	status,0
+   839  007D12  D001               	goto	u161
+   840  007D14  D001               	goto	u160
+   841  007D16                     u161:
+   842  007D16  D7F0               	goto	l683
+   843  007D18                     u160:
+   844                           	
+   845  007D18                     l684:		; BSR set to: ?
+   846                           
+   847                           	line	26
+   848                           ;lcd_lib.c: 26: RD1=0;
+   849  007D18  9283               	bcf	c:(31769/8),(31769)&7	;volatile
+   850                           	line	27
+   851                           ;lcd_lib.c: 27: }
+   852  007D1A                     l682:
+   853                           			; BSR set to: ?
+   854                           
+   855  007D1A  0012               	return
+   856                           	opt stack 0
+   857                           GLOBAL __end_of_cmd
+   858  007D1C                     	__end_of_cmd:
+   859                           	FNSIZE	_cmd,2,1
+   860                           ; =============== function _cmd ends ===========
+                                 =
+   861                           
+   862                           	signat	_cmd,4216
+   863                           	FNCALL	_main,_lcd_init
+   864                           	FNCALL	_main,_data
+   865                           	FNCALL	_lcd_init,_cmd
+   866                           	FNROOT	_main
+   867                                   psect   const,class=CODE,space=0,reloc=2
+   868                           	global	_ADCON1
+   869  000000                     _ADCON1	equ	0xFC1
+   870                           	global	_LATB
+   871  000000                     _LATB	equ	0xF8A
+   872                           	global	_LATC
+   873  000000                     _LATC	equ	0xF8B
+   874                           	global	_PORTB
+   875  000000                     _PORTB	equ	0xF81
+   876                           	global	_TRISB
+   877  000000                     _TRISB	equ	0xF93
+   878                           	global	_TRISC
+   879  000000                     _TRISC	equ	0xF94
+   880                           	global	_TRISD
+   881  000000                     _TRISD	equ	0xF95
+   882                           	global	_RB0
+   883  000000                     _RB0	equ	0x7C08
+   884                           	global	_RB1
+   885  000000                     _RB1	equ	0x7C09
+   886                           	global	_RB2
+   887  000000                     _RB2	equ	0x7C0A
+   888                           	global	_RB3
+   889  000000                     _RB3	equ	0x7C0B
+   890                           	global	_RC0
+   891  000000                     _RC0	equ	0x7C10
+   892                           	global	_RC1
+   893  000000                     _RC1	equ	0x7C11
+   894                           	global	_RD0
+   895  000000                     _RD0	equ	0x7C18
+   896                           	global	_RD1
+   897  000000                     _RD1	equ	0x7C19
+   898                           	psect	intsave_regs,class=BIGRAM,space=1
+   899                           	PSECT	param0,class=BANK0,space=1
+   900                           	GLOBAL	__Lparam0
+   901                           	FNCONF	param0,??,?
+   902                           GLOBAL	__Lparam, __Hparam
+   903                           GLOBAL	__Lparam0, __Hparam0
+   904  000000                     __Lparam	EQU	__Lparam0
+   905  000000                     __Hparam	EQU	__Hparam0
+
+
+HI-TECH Software PICC-18 Macro Assembler V9.63PL3 build 4692 
+Symbol Table                                           Wed Nov 17 08:20:33 2021
+
+               u90 7D4A                 u91 7D48                l680 7D90  
+              l681 7CC6                l682 7D1A                l674 7D90  
+              l683 7CF8                l675 7D4C                l684 7D18  
+              l676 7D6C                l678 7D70                _RB0 007C08  
+              _RB1 007C09                _RC0 007C10                _RB2 007C0A  
+              _RC1 007C11                _RB3 007C0B                _RD0 007C18  
+              _RD1 007C19                u100 7D6C                u101 7D6A  
+              u110 7D78                u111 7D76                u120 7D80  
+              u121 7D7E                u130 7D88                u131 7D86  
+              u140 7D90                u141 7D8E                u150 7CF6  
+              u151 7CF4                u160 7D18                u161 7D16  
+              _cmd 7CC8               l1400 7F1E               l1402 7FC6  
+             l1403 7F6E               l1404 7F84               l1405 7F9A  
+             l1406 7FB0               ?_cmd 00FD               l1380 7FFA  
+             l1381 7DB2               l1390 7EA2               l1391 7E4A  
+             l1383 7E44               l1392 7E60               l1384 7E10  
+             l1393 7E76               l1385 7DB8               l1394 7E8C  
+             l1386 7DCE               l1395 7F68               l1387 7DE4  
+             l1396 7F34               l1388 7DFA               l1397 7EDC  
+             l1389 7ED6               l1398 7EF2               l1399 7F08  
+             _LATB 000F8A               _LATC 000F8B               _data 7D1C  
+             cmd@a 00FD               cmd@i 00FE               _main 7D92  
+             start 0000              ??_cmd 00FE              l30040 7FDA  
+            l30033 7E3A              l30034 7E24              l30035 7ECC  
+            l30036 7EB6              l30037 7F5E              l30038 7F48  
+            l30039 7FF0              ?_data 00FC              ?_main 00F9  
+            _PORTB 000F81              _TRISB 000F93              _TRISC 000F94  
+            _TRISD 000F95              data@a 00FC              data@i 00FD  
+            status 000FD8       __end_of_data 7D92       __end_of_main 8000  
+           ??_data 00FD             ??_main 00F9      __activetblptr 000000  
+           _ADCON1 000FC1             __Ldata 000000   __end_of_lcd_init 7CC8  
+     __mediumconst 0600         __accesstop 0060          ?_lcd_init 00FC  
+          __Hparam 0100            __Lparam 00F9            __ramtop 0600  
+       ??_lcd_init 00FC      __Lmediumconst 0600        __end_of_cmd 7D1C  
+      __smallconst 0600           __Hparam0 0100           __Lparam0 00F9  
+     __Lsmallconst 0600           _lcd_init 7C8A  

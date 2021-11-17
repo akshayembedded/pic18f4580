@@ -1,0 +1,70 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4580 ]
+"4 F:\online\ahmed\pic controller\keypad_update1.c
+[v _main `(v  1 e 0 0 ]
+"3 F:\online\ahmed\pic controller\lcd_lib.c
+[v _data `(v  1 e 0 0 ]
+"13
+[v _lcd_init `(v  1 e 0 0 ]
+"20
+[v _cmd `(v  1 e 0 0 ]
+"90 C:\Program Files (x86)\HI-TECH Software\PICC-18\PRO\9.63\include\pic18f4580.h
+[v _ADCON1 `Nuc  1 e 1 @4033 ]
+"138
+[v _TRISD `VNuc  1 e 1 @3989 ]
+"140
+[v _TRISC `VNuc  1 e 1 @3988 ]
+"141
+[v _TRISB `VNuc  1 e 1 @3987 ]
+"147
+[v _LATC `VNuc  1 e 1 @3979 ]
+"148
+[v _LATB `VNuc  1 e 1 @3978 ]
+"155
+[v _PORTB `VNuc  1 e 1 @3969 ]
+"667
+[v _RD0 `VNb  1 e 0 @31768 ]
+"668
+[v _RD1 `VNb  1 e 0 @31769 ]
+"678
+[v _RC0 `VNb  1 e 0 @31760 ]
+"679
+[v _RC1 `VNb  1 e 0 @31761 ]
+"688
+[v _RB0 `VNb  1 e 0 @31752 ]
+"689
+[v _RB1 `VNb  1 e 0 @31753 ]
+"690
+[v _RB2 `VNb  1 e 0 @31754 ]
+"691
+[v _RB3 `VNb  1 e 0 @31755 ]
+"4 F:\online\ahmed\pic controller\keypad_update1.c
+[v _main `(v  1 e 0 0 ]
+{
+"47
+} 0
+"3 F:\online\ahmed\pic controller\lcd_lib.c
+[v _data `(v  1 e 0 0 ]
+{
+"4
+[v _i `i  1 a 2 0 ]
+"3
+[v _a `uc  1 p 1 0 ]
+"11
+} 2
+"13
+[v _lcd_init `(v  1 e 0 0 ]
+{
+"17
+} 0
+"20
+[v _cmd `(v  1 e 0 0 ]
+{
+"21
+[v _i `i  1 a 2 0 ]
+"20
+[v _a `uc  1 p 1 0 ]
+"27
+} 2
